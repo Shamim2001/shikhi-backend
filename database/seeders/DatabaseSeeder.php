@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Category;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -24,5 +26,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@shikhi.test',
             'password' => bcrypt('123'),
         ]);
+
+        // Category
+        Category::factory(10)->create();
+
+        // Course
+        Course::factory(15)->create();
     }
 }

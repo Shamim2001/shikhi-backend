@@ -50,6 +50,32 @@
                                 </ul>
                             </div>
                         </li> <!-- end Dashboard Menu -->
+
+                        <!-- start permission -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarPermissions" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarPermissions">
+                                <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-dashboards">User Management</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarPermissions">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('user.role.index') }}" class="nav-link" data-key="t-roles"> Role </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" data-key="t-permissions">
+                                            Permission </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" data-key="t-users">
+                                            Users </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> <!-- end permission -->
+
+
+{{--
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarApps">
@@ -223,7 +249,7 @@
                                 </div>
                             </div>
                         </li>
-
+ --}}
 
                     </ul>
                 </div>

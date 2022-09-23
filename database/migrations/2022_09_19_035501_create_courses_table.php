@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->string('slug', 255);
-            $table->string('thumbnail', 255);
+            $table->string('thumbnail', 255)->nullable();
             $table->longText('requirements');
             $table->string('audience', 255);
             $table->enum('status', ['public', 'privet'])->default('public');

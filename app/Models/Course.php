@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
-
+     protected $table = 'courses';
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+
+    // Change default Route name
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
