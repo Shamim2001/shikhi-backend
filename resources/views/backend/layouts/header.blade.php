@@ -12,6 +12,9 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('backend') }}/assets/images/favicon.ico">
+    <!-- Filepond css -->
+    <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/filepond/filepond.min.css" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
 
     <!-- Layout config Js -->
     <script src="{{ asset('backend') }}/assets/js/layout.js"></script>
@@ -190,7 +193,7 @@
                             <button type="button"
                                 class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img id="header-lang-img" src="{{ asset('backend') }}/assets/images/flags/us.svg" alt="Header Language"
+                                <img id="header-lang-img" src="{{ asset('backend') }}/assets/images/flags/us.png" alt="Header Language"
                                     height="20" class="rounded">
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -198,7 +201,7 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language py-2"
                                     data-lang="en" title="English">
-                                    <img src="{{ asset('backend') }}/assets/images/flags/us.svg" alt="user-image" class="me-2 rounded"
+                                    <img src="{{ asset('backend') }}/assets/images/flags/us.png" alt="user-image" class="me-2 rounded"
                                         height="18">
                                     <span class="align-middle">English</span>
                                 </a>

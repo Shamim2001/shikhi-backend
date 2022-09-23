@@ -34,21 +34,9 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                            <a class="nav-link menu-link" href="{{ route('dashboard.index') }}">
                                 <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
                             </a>
-                            <div class="collapse menu-dropdown" id="sidebarDashboards">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="index-2.html" class="nav-link" data-key="t-ecommerce"> Ecommerce </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="dashboard-projects.html" class="nav-link" data-key="t-projects">
-                                            Projects </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li> <!-- end Dashboard Menu -->
 
                         <!-- start permission -->
@@ -73,6 +61,18 @@
                                 </ul>
                             </div>
                         </li> <!-- end permission -->
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ route('course.index') }}" {{ request()->routeIs('course.*') ? 'text-white hover:text-white' : '' }}>
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Courses</span>
+                            </a>
+                        </li> <!-- end courses -->
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#">
+                                <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-dashboards">Category</span>
+                            </a>
+                        </li> <!-- end Category -->
 
 
 {{--

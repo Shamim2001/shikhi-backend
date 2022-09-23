@@ -17,7 +17,7 @@ class CourseFactory extends Factory {
      * @return array<string, mixed>
      */
     public function definition() {
-        $name = $this->faker->sentence(rand(3, 7));
+        $name = $this->faker->name();
         $type = ['public', 'privet'];
         return [
             'name'         => $name,
