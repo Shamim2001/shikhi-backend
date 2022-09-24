@@ -22,7 +22,8 @@ class CourseFactory extends Factory {
         return [
             'name'         => $name,
             'slug'         => Str::slug( $name ),
-            'requirements' => $this->faker->sentence( rand( 5, 15 ) ),
+            'description'  => $this->faker->sentence( rand( 5, 10 ) ),
+            'requirements' => $this->faker->sentence( rand( 5, 10 ) ),
             'audience'     => $this->faker->sentence(),
             'status'       => $type[rand( 0, 1 )],
             'category_id'  => Category::all()->random()->id,

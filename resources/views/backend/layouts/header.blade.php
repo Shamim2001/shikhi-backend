@@ -12,9 +12,14 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('backend') }}/assets/images/favicon.ico">
+    <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/dropzone/dropzone.css" type="text/css" />
     <!-- Filepond css -->
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/filepond/filepond.min.css" type="text/css" />
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
+
+
+    <!-- tiny editor Js -->
+     <script src="https://cdn.tiny.cloud/1/y5ceq8cxh6oivxq371ywid0ezemdwg185q879rp22231kpik/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Layout config Js -->
     <script src="{{ asset('backend') }}/assets/js/layout.js"></script>

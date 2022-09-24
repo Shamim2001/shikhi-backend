@@ -38,6 +38,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Slug</th>
+                                <th scope="col">Description</th>
                                 <th scope="col" class="w-25">Requirements</th>
                                 <th scope="col" class="w-25">Audience</th>
                                 <th scope="col">Status</th>
@@ -50,6 +51,7 @@
                                     <td>{{ $course->thumbnail }}</td>
                                     <td><a href="#">{{ $course->name }}</a></td>
                                     <td>{{ $course->slug }}</td>
+                                    <td>{{ $course->description }}</td>
                                     <td>{{ $course->requirements }}</td>
                                     <td>{{ $course->audience }}</td>
                                     <td>{{ $course->status }}</td>
