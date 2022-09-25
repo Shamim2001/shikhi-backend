@@ -25,7 +25,7 @@ class CourseFactory extends Factory {
             'description'  => $this->faker->sentence( rand( 5, 10 ) ),
             'requirements' => $this->faker->sentence( rand( 5, 10 ) ),
             'audience'     => $this->faker->sentence(),
-            'status'       => $type[rand( 0, 1 )],
+            'visibility'       => $type[rand( 0, 1 )],
             'category_id'  => Category::all()->random()->id,
             'teacher_id'   => User::all()->random()->id,
         ];

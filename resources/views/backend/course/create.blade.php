@@ -1,7 +1,19 @@
 @extends('backend.layouts.master')
 
 @section('title', 'Dashboard')
-
+@section('css')
+    <style>
+        .visibility_ {
+            width: 100%;
+            padding: 180px;
+            padding: 1rem;
+            border-radius: 5px;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            box-shadow: 0 7px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+    </style>
+@endsection
 @section('content')
     <div class="page-content">
         <div class="container-fluid">
@@ -25,123 +37,173 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation">
+                    <form action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data"
+                        class="row g-3 needs-validation">
                         @csrf
-                        <div class="col-md-4 position-relative">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" id="name"
-                                placeholder="type course name" required>
-                            <div class="">
-                                @error('name')
-                                    <p class="text-denger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 position-relative">
-                            <label for="requirements" class="form-label">Requirements</label>
-                            <input type="text" class="form-control" name="requirements" id="requirements"
-                                placeholder="type requirement" required>
-                            <div class="valid-tooltip">
-                                @error('requirements')
-                                    <p class="text-denger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-3 position-relative">
-                            <label for="statused" class="form-label">Status</label>
-                            <select class="form-select" name="statused" id="statused" required style="width: 340px">
-                                <option  disabled value="">select status</option>
-                                <option>public</option>
-                                <option>privet</option>
-                            </select>
-                            @error('statused')
-                                <p class="text-denger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="col-md-12 position-relative">
-                            <label for="description" class="form-label">Description</label>
-                            <textarea name="description" id="description"></textarea>
-                            <div class="valid-tooltip">
-                                @error('description')
-                                    <p class="text-denger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-4 position-relative">
-                            <label for="audience" class="form-label">Audience</label>
-                            <input type="text" class="form-control" name="audience" id="audience" required>
-                            @error('audience')
-                                <p class="text-denger">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-3 position-relative">
-                            <label for="category_id" class="form-label">Category</label>
-                            <select class="form-select" name="category_id" id="category_id" required>
-                                <option disabled>select category</option>
-                                <option>wordpress</option>
-                                <option>vue</option>
-                            </select>
-                            <div class="invalid-tooltip">
-                                @error('category_id')
-                                    <p class="text-denger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-3 position-relative">
-                            <label for="thumbnails" class="form-label">Thumbnail</label>
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="dropzone p-0" style="min-height: 0;">
-                                        <div class="fallback">
-                                            <input name="thumbnail" id="thumbnail" type="file" multiple="multiple">
-                                        </div>
-                                        <div class="dz-message needsclick">
-                                            <h5>Drop files here or click to upload.</h5>
-                                        </div>
-                                    </div>
-                                    <div class="invalid-tooltip">
-                                        @error('thumbnail')
+                        <div class="d-flex justify-content-between gap-4">
+                            <div class="flex-1">
+                                <div class="position-relative mb-5">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        placeholder="type course name" required>
+                                    <div class="">
+                                        @error('name')
                                             <p class="text-denger">{{ $message }}</p>
                                         @enderror
                                     </div>
+                                </div>
 
-                                    <ul class="list-unstyled mb-0" id="dropzone-preview">
-                                        <li class="mt-2" id="dropzone-preview-list">
-                                            <!-- This is used as the file preview template -->
-                                            <div class="border rounded">
-                                                <div class="d-flex p-2">
-                                                    <div class="flex-shrink-0 me-3">
-                                                        <div class="avatar-sm bg-light rounded">
-                                                            <img data-dz-thumbnail class="img-fluid rounded d-block"
-                                                                src="#" alt="Dropzone-Image" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <div class="pt-1">
-                                                            <h5 class="fs-14 mb-1" data-dz-name>&nbsp;</h5>
-                                                            <p class="fs-13 text-muted mb-0" data-dz-size></p>
-                                                            <strong class="error text-danger" data-dz-errormessage></strong>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-shrink-0 ms-3">
-                                                        <button data-dz-remove class="btn btn-sm btn-danger"><i
-                                                                class="ri-delete-bin-5-line"></i></button>
-                                                    </div>
+                                <!-- description -->
+                                <div class="mb-5 position-relative">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea name="description" id="description"></textarea>
+                                    <div class="valid-tooltip">
+                                        @error('description')
+                                            <p class="text-denger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- image upload-->
+                                <div class="mb-5 position-relative">
+                                    <label for="thumbnail" class="form-label">Thumbnail</label>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="dropzone p-0" style="min-height: 0;">
+                                                <div class="fallback">
+                                                    <input type="file" name="thumbnail" id="thumbnail"
+                                                        multiple="multiple" required>
+                                                </div>
+                                                <div class="dz-message needsclick">
+                                                    <h5>Drop files here or click to upload.</h5>
                                                 </div>
                                             </div>
-                                        </li>
-                                    </ul>
-                                    <!-- end dropzon-preview -->
-                                </div>
-                                <!-- end card body -->
-                            </div>
-                            <!-- end card -->
-                        </div>
+                                            <div class="invalid-tooltip">
+                                                @error('thumbnail')
+                                                    <p class="text-denger">{{ $message }}</p>
+                                                @enderror
+                                            </div>
 
-                        <div class="col-12 mb-3">
-                            <button class="btn btn-primary" type="submit">Create</button>
+                                            <ul class="list-unstyled mb-0" id="dropzone-preview">
+                                                <li class="mt-2" id="dropzone-preview-list">
+                                                    <!-- This is used as the file preview template -->
+                                                    <div class="border rounded">
+                                                        <div class="d-flex p-2">
+                                                            <div class="flex-shrink-0 me-3">
+                                                                <div class="avatar-sm bg-light rounded">
+                                                                    <img data-dz-thumbnail class="img-fluid rounded d-block"
+                                                                        src="#" alt="Dropzone-Image" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-grow-1">
+                                                                <div class="pt-1">
+                                                                    <h5 class="fs-14 mb-1" data-dz-name>&nbsp;</h5>
+                                                                    <p class="fs-13 text-muted mb-0" data-dz-size></p>
+                                                                    <strong class="error text-danger"
+                                                                        data-dz-errormessage></strong>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-shrink-0 ms-3">
+                                                                <button data-dz-remove class="btn btn-sm btn-danger"><i
+                                                                        class="ri-delete-bin-5-line"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <!-- end dropzon-preview -->
+                                        </div>
+                                        <!-- end card body -->
+                                    </div>
+                                    <!-- end card -->
+                                </div>
+                            </div>
+                            <div class="w-25 mt-4">
+                                <!-- requirements -->
+                                <div class="col-md-4 position-relative mb-4 visibility_">
+                                    <div class="border-bottom text-center ">
+                                        <h4 class="text-black">Requirements</h4>
+                                    </div>
+                                    <input type="text" class="form-control py-5" name="requirements" id="requirements"
+                                        placeholder="type requirement" required>
+                                    <div class="valid-tooltip">
+                                        @error('requirements')
+                                            <p class="text-denger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Visibility -->
+                                <div class="col-md-3 position-relative mb-4 visibility_">
+                                    <div class="border-bottom text-center ">
+                                        <h4 class="text-black">Visibility</h4>
+                                    </div>
+                                    <!-- Custom Radio Color -->
+                                    <div class="form-check form-radio-primary py-2">
+                                        <label class="form-check-label" for="public">
+                                            <input class="form-check-input" type="radio" name="visibility" id="public"
+                                                value="public" checked>
+                                            <label for="public">public</label>
+                                        </label>
+                                    </div>
+
+                                    <!-- Custom Radio Color -->
+                                    <div class="form-check form-radio-primary">
+                                        <label class="form-check-label" for="private">
+                                            <input class="form-check-input" type="radio" name="visibility" id="private"
+                                                value="private" checked>
+                                            <label for="private">Private</label>
+                                        </label>
+                                    </div>
+                                    <div class="mt-2">
+                                        <button class="btn btn-primary w-100" type="submit">Create</button>
+                                    </div>
+
+                                    @error('visibility')
+                                        <p class="text-denger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <!-- Category -->
+                                <div class="col-md-4 position-relative mb-4 visibility_">
+                                    <div class="border-bottom text-center ">
+                                        <h4 class="text-black">Category</h4>
+                                    </div>
+
+                                    @foreach ($categories as $category)
+                                        <div class="form-check py-2">
+                                            <input class="form-check-input" type="checkbox" name="category_id"
+                                                id="category_id" value="{{ $category->id }}">
+                                            <label class="form-check-label" for="category_id">
+                                                {{ $category->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+
+                                    <div class="mt-3 text-center">
+                                        <a href="#">Add New Category</a>
+                                    </div>
+                                    <div class="valid-tooltip">
+                                        @error('category_id')
+                                            <p class="text-denger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- audience -->
+                                <div class="col-md-4 position-relative mb-4 visibility_">
+                                    <div class="border-bottom text-center ">
+                                        <h4 class="text-black">Audience</h4>
+                                    </div>
+                                    <input type="text" class="form-control py-5" name="audience" id="audience"
+                                        placeholder="type requirement" required>
+                                    <div class="valid-tooltip">
+                                        @error('audience')
+                                            <p class="text-denger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
 

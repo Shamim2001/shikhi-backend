@@ -37,11 +37,12 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Slug</th>
                                 <th scope="col">Description</th>
                                 <th scope="col" class="w-25">Requirements</th>
                                 <th scope="col" class="w-25">Audience</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Teacher</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Visibility</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -49,33 +50,41 @@
                             @forelse ($courses as $course)
                                 <tr>
                                     <td>{{ $course->thumbnail }}</td>
-                                    <td><a href="#">{{ $course->name }}</a></td>
-                                    <td>{{ $course->slug }}</td>
+                                    <td><a href="{{ route('course.show', $course) }}">{{ $course->name }}</a></td>
                                     <td>{{ $course->description }}</td>
                                     <td>{{ $course->requirements }}</td>
                                     <td>{{ $course->audience }}</td>
-                                    <td>{{ $course->status }}</td>
+                                    <td>{{ $course->teacher->name }}</td>
+                                    <td>{{ optional($course->category)->name }}</td>
+                                    <td>{{ $course->visibility }}</td>
                                     <td>
                                         <div class="hstack gap-3 fs-15">
-                                            <a href="javascript:void(0);" class="link-primary"><i
+                                            <a href="{{ route('course.edit', $course) }}" class="link-primary"><i
                                                     class="ri-edit-fill "></i></a>
                                             <a href="javascript:void(0);" class="link-success"><i
                                                     class="ri-eye-line "></i></a>
-                                            <a href="javascript:void(0);" class="link-danger"><i
-                                                    class="ri-delete-bin-5-line"></i></a>
+                                            <form action="{{ route('course.destroy', $course) }}" method="post"
+                                                onsubmit="return confirm('Do you really want to delete?');">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="link-danger"><i
+                                                        class="ri-delete-bin-5-line"></i></button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
                             @empty
                             @endforelse
-
                         </tbody>
                     </table>
-
 
                 </div>
             </div>
         </div>
         <!-- container-fluid -->
-    </div>
+        <div class="mt-4">
+            {{ $courses->links() }}
+        </div>
+    </div>>
 @endsection

@@ -11,10 +11,20 @@ class Course extends Model
      protected $table = 'courses';
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+
+    // User Relation one to ne Relationship
+    public function teacher()
+    {
+        return $this->belongsTo(User::class, 'teacher_id', 'id');
+    }
+
+
+    // Category one to one Relationship
     public function category()
     {
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
+
 
     // Change default Route name
     public function getRouteKeyName()
