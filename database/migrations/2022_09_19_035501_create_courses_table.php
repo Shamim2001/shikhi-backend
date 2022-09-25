@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('thumbnail', 255)->nullable();
             $table->longText('requirements');
             $table->string('audience', 255);
-            $table->enum('visibility', ['public', 'privet'])->default('public');
+            $table->enum('visibility', ['public', 'private'])->default('public');
             $table->foreignId('category_id');
             $table->foreignId('teacher_id');
             $table->timestamps();

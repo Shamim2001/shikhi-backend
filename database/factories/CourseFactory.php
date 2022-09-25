@@ -18,7 +18,7 @@ class CourseFactory extends Factory {
      */
     public function definition() {
         $name = $this->faker->name();
-        $type = ['public', 'privet'];
+        $type = ['public', 'private'];
         return [
             'name'         => $name,
             'slug'         => Str::slug( $name ),

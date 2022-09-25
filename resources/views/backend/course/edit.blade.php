@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 
-@section('title', 'Create')
+@section('title', 'Edit')
 @section('css')
     <style>
         .visibility_ {
@@ -26,7 +26,7 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                                <li class="breadcrumb-item active">Create</li>
+                                <li class="breadcrumb-item active">Edits</li>
                             </ol>
                         </div>
 
@@ -37,14 +37,15 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('course.update', $course) }}" method="POST" enctype="multipart/form-data"
                         class="row g-3 needs-validation">
                         @csrf
+                        @method('PUT')
                         <div class="d-flex justify-content-between gap-4">
                             <div class="flex-1">
                                 <div class="position-relative mb-5">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name" id="name"
+                                    <input type="text" class="form-control" name="name" id="name" value="{{ $course->name }}"
                                         placeholder="type course name" required>
                                     <div class="">
                                         @error('name')
@@ -56,7 +57,7 @@
                                 <!-- description -->
                                 <div class="mb-5 position-relative">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea name="description" id="description"></textarea>
+                                    <textarea name="description" id="description" value="{{ $course->description }}"></textarea>
                                     <div class="valid-tooltip">
                                         @error('description')
                                             <p class="text-denger">{{ $message }}</p>
@@ -71,7 +72,7 @@
                                         <div class="card-body">
                                             <div class="dropzone p-0" style="min-height: 0;">
                                                 <div class="fallback">
-                                                    <input type="file" name="thumbnail" id="thumbnail"
+                                                    <input type="file" name="thumbnail" id="thumbnail" value="{{ $course->thumbnail }}"
                                                         multiple="multiple" required>
                                                 </div>
                                                 <div class="dz-message needsclick">
@@ -124,7 +125,7 @@
                                     <div class="border-bottom text-center ">
                                         <h4 class="text-black">Requirements</h4>
                                     </div>
-                                    <input type="text" class="form-control py-5" name="requirements" id="requirements"
+                                    <input type="text" class="form-control py-5" name="requirements" value="{{ $course->requirements }}" id="requirements"
                                         placeholder="type requirement" required>
                                     <div class="valid-tooltip">
                                         @error('requirements')
@@ -141,18 +142,17 @@
                                     <!-- Custom Radio Color -->
                                     <div class="form-check form-radio-primary py-2">
                                         <label class="form-check-label" for="public">
-                                            <input class="form-check-input" type="radio" name="visibility" id="public"
-                                                value="public" checked>
-                                            <label for="public">public</label>
+                                            <input class="form-check-input" type="radio" name="visibility" {{ $course->visibility == 'public' ? 'selected' : ''  }} id="public" value="public">
+                                            <label for="public">{{ $course->visibility }}</label>
                                         </label>
                                     </div>
 
                                     <!-- Custom Radio Color -->
                                     <div class="form-check form-radio-primary">
                                         <label class="form-check-label" for="private">
-                                            <input class="form-check-input" type="radio" name="visibility" id="private"
-                                                value="private" checked>
-                                            <label for="private">Private</label>
+                                            <input class="form-check-input" type="radio" name="visibility" id="private" {{ $course->visibility == 'private' ? 'selected' : ''  }}
+                                                value="private">
+                                            <label for="private">{{ $course->visibility }}</label>
                                         </label>
                                     </div>
                                     <div class="mt-2">
@@ -173,7 +173,7 @@
                                     @foreach ($categories as $category)
                                         <div class="form-check py-2">
                                             <input class="form-check-input" type="checkbox" name="category_id"
-                                                id="category_id" value="{{ $category->id }}">
+                                                id="category_id" value="{{ $category->id }}" {{ $course->category->id ==  $category->id ? 'checked' : ''  }}>
                                             <label class="form-check-label" for="category_id">
                                                 {{ $category->name }}
                                             </label>
@@ -195,7 +195,7 @@
                                     <div class="border-bottom text-center ">
                                         <h4 class="text-black">Audience</h4>
                                     </div>
-                                    <input type="text" class="form-control py-5" name="audience" id="audience"
+                                    <input type="text" class="form-control py-5" name="audience" id="audience" value="{{ $course->audience }}"
                                         placeholder="type requirement" required>
                                     <div class="valid-tooltip">
                                         @error('audience')

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -28,9 +27,9 @@ class CourseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view( 'backend.course.create' )->with([
+        return view( 'backend.course.create' )->with( [
             'categories' => Category::orderBy( 'name', 'ASC' )->get(),
-        ]);
+        ] );
     }
 
     /**
@@ -47,9 +46,8 @@ class CourseController extends Controller {
             'requirements' => ['required', 'string'],
             'visibility'   => ['required', 'not_in:none'],
             'audience'     => ['required'],
-            'category_id'     => ['required', 'not_in:none'],
+            'category_id'  => ['required', 'not_in:none'],
         ] );
-
 
         $thumb = '';
         if ( !empty( $request->file( 'thumbnail' ) ) ) {
@@ -90,8 +88,11 @@ class CourseController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id ) {
-        //
+    public function edit( Course $course ) {
+        return view( 'backend.course.edit' )->with( [
+            'course'     => $course,
+            'categories' => Category::orderBy( 'name', 'ASC' )->get(),
+        ] );
     }
 
     /**
@@ -101,8 +102,38 @@ class CourseController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update( Request $request, $id ) {
-        //
+    public function update( Request $request, Course $course ) {
+
+        $request->validate( [
+            'name'         => ['required', 'max:255', 'string'],
+            'description'  => ['required'],
+            'requirements' => ['required', 'string'],
+            'visibility'   => ['required', 'not_in:none'],
+            'audience'     => ['required'],
+            'category_id'  => ['required', 'not_in:none'],
+        ] );
+
+        $thumb = '';
+        if ( !empty( $request->file( 'thumbnail' ) ) ) {
+            $thumb = time() . '-' . $request->file( 'thumbnail' )->getClientOriginalName();
+            $thumb = str_replace( ' ', '-', $thumb );
+
+            $request->file( 'thumbnail' )->storeAs( 'public/uploads/courses', $thumb );
+        }
+
+        $course->update( [
+            'name'         => $request->name,
+            'slug'         => Str::slug( $request->name ),
+            'requirements' => $request->requirements,
+            'visibility'   => $request->visibility,
+            'description'  => $request->description,
+            'audience'     => $request->audience,
+            'category_id'  => $request->category_id,
+            'teacher_id'   => Auth::id(),
+            'thumbnail'    => $thumb,
+        ] );
+
+        return redirect()->route( 'course.index' )->with('success', 'Courses Updated Succefully');
     }
 
     /**
@@ -114,6 +145,6 @@ class CourseController extends Controller {
     public function destroy( Course $course ) {
         $course->delete();
 
-        return redirect()->route('course.index')->with('success', 'Courses Deleted Succesfull!');
+        return redirect()->route( 'course.index' )->with( 'success', 'Courses Deleted Succesfull!' );
     }
 }

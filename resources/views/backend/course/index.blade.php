@@ -37,8 +37,8 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Description</th>
-                                <th scope="col" class="w-25">Requirements</th>
+                                <th scope="col" >Description</th>
+                                <th scope="col" class="">Requirements</th>
                                 <th scope="col" class="w-25">Audience</th>
                                 <th scope="col">Teacher</th>
                                 <th scope="col">Category</th>
@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>{{ $course->thumbnail }}</td>
                                     <td><a href="{{ route('course.show', $course) }}">{{ $course->name }}</a></td>
-                                    <td>{{ $course->description }}</td>
+                                    <td>{!! $course->description !!}</td>
                                     <td>{{ $course->requirements }}</td>
                                     <td>{{ $course->audience }}</td>
                                     <td>{{ $course->teacher->name }}</td>
