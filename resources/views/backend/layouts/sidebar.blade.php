@@ -74,6 +74,16 @@
                         <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-dashboards">Category</span>
                     </a>
                 </li> <!-- end Category -->
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('user.index') }}">
+                        <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-dashboards">Users</span>
+                    </a>
+                </li> <!-- end User -->
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('lesson.index') }}" {{ request()->routeIs('lesson.') ? 'active' : ''}}>
+                        <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-dashboards">Lessons</span>
+                    </a>
+                </li> <!-- end Lesson -->
             </ul>
         </div>
         <!-- Sidebar -->

@@ -57,7 +57,7 @@
                                 <!-- description -->
                                 <div class="mb-5 position-relative">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea name="description" id="description" >{{ $course->description }}</textarea>
+                                    <textarea name="description" id="description" value="{{ $course->description }}"></textarea>
                                     <div class="valid-tooltip">
                                         @error('description')
                                             <p class="text-denger">{{ $message }}</p>
@@ -69,14 +69,7 @@
                                 <div class="mb-5 position-relative">
                                     <label for="thumbnail" class="form-label">Thumbnail</label>
                                     <div class="card">
-                                        @if ("{{ url('storage/uploads/courses/' $course->thumbnail) }}")
-                                            <img src="{{ $course->image }}">
-                                        @else
-                                            <p>No image found</p>
-                                        @endif
-                                            <input type="file" name="thumbnail" value="{{ $course->thumbnail }}"/>
-
-                                        {{-- <input type="file" name="thumbnail" id="thumbnail" value="{{ $course->thumbnail ==  }}"> --}}
+                                        <input type="file" name="thumbnail" id="thumbnail" value="{{ old('thumbnail') }}">
                                     </div>
                                     <!-- end card -->
                                 </div>
@@ -104,7 +97,7 @@
                                     <!-- Custom Radio Color -->
                                     <div class="form-check form-radio-primary py-2">
                                         <label class="form-check-label" for="public">
-                                            <input class="form-check-input" type="radio" name="visibility" id="public" value="public" {{ $course->visibility == 'public' ? 'checked' : '' }}>
+                                            <input class="form-check-input" type="radio" name="visibility" {{ $course->visibility == 'public' ? 'selected' : ''  }} id="public" value="public">
                                             <label for="public">{{ $course->visibility }}</label>
                                         </label>
                                     </div>
@@ -112,7 +105,8 @@
                                     <!-- Custom Radio Color -->
                                     <div class="form-check form-radio-primary">
                                         <label class="form-check-label" for="private">
-                                            <input class="form-check-input" type="radio" name="visibility" id="private" value="private" {{ $course->visibility == 'private' ? 'checked' : '' }}>
+                                            <input class="form-check-input" type="radio" name="visibility" id="private" {{ $course->visibility == 'private' ? 'selected' : ''  }}
+                                                value="private">
                                             <label for="private">{{ $course->visibility }}</label>
                                         </label>
                                     </div>

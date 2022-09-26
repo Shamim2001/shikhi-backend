@@ -10,4 +10,10 @@ class Lesson extends Model
     use HasFactory;
      protected $table = 'lessons';
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    // Course one to one relationships
+    public function course()
+    {
+        $this->belongsTo(Course::class);
+    }
 }
