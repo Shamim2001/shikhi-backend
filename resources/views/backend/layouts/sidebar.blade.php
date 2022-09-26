@@ -70,7 +70,7 @@
                 </li> <!-- end courses -->
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('category.index') }}">
                         <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-dashboards">Category</span>
                     </a>
                 </li> <!-- end Category -->
