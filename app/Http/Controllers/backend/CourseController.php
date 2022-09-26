@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CourseController extends Controller {
@@ -39,14 +40,15 @@ class CourseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store( Request $request ) {
-        // dd( $request->thumbnail );
+
         $request->validate( [
-            'name'         => ['required', 'max:255', 'string'],
-            'description'  => ['required'],
-            'requirements' => ['required', 'string'],
-            'visibility'   => ['required', 'not_in:none'],
-            'audience'     => ['required'],
-            'category_id'  => ['required', 'not_in:none'],
+            'name'         => 'required|max:255|string',
+            'description'  => 'required',
+            'requirements' => 'required|string',
+            'visibility'   => 'required|not_in:none',
+            'audience'     => 'required',
+            'category_id'  => 'required|not_in:none',
+            'thumbnail'    => 'image|mimes:png,jpg,jpeg|max:2048',
         ] );
 
         $thumb = '';
@@ -111,13 +113,18 @@ class CourseController extends Controller {
             'visibility'   => ['required', 'not_in:none'],
             'audience'     => ['required'],
             'category_id'  => ['required', 'not_in:none'],
+            'thumbnail'    => 'image|mimes:png,jpg,jpeg|max:2048',
         ] );
 
-        $thumb = '';
-        if ( !empty( $request->file( 'thumbnail' ) ) ) {
-            $thumb = time() . '-' . $request->file( 'thumbnail' )->getClientOriginalName();
-            $thumb = str_replace( ' ', '-', $thumb );
 
+
+        // get default thumbnail
+        $thumb = $course->thumbnail;
+        // update new thumbnail
+        if ( !empty( $request->file( 'thumbnail' ) ) ) {
+            Storage::delete( 'public/uploads/courses' . $thumb ); // delete the old image
+            $filename = strtolower( str_replace( ' ', '-', $request->file( 'thumbnail' )->getClientOriginalName() ) );
+            $thumb = time() . '-' . $filename;
             $request->file( 'thumbnail' )->storeAs( 'public/uploads/courses', $thumb );
         }
 
@@ -133,7 +140,7 @@ class CourseController extends Controller {
             'thumbnail'    => $thumb,
         ] );
 
-        return redirect()->route( 'course.index' )->with('success', 'Courses Updated Succefully');
+        return redirect()->route( 'course.index' )->with( 'success', 'Courses Updated Succefully' );
     }
 
     /**

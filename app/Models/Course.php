@@ -26,6 +26,16 @@ class Course extends Model
     }
 
 
+    // Accessor
+    public function getThumbnailAttribute( $name ) {
+        if ( str_starts_with( $name, 'http' ) ) {
+            return $name;
+        } else {
+            return asset( 'storage/uploads/courses/' . $name );
+        }
+    }
+
+
     // Change default Route name
     public function getRouteKeyName()
     {

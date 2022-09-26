@@ -24,10 +24,11 @@ class CourseFactory extends Factory {
             'slug'         => Str::slug( $name ),
             'description'  => $this->faker->sentence( rand( 5, 10 ) ),
             'requirements' => $this->faker->sentence( rand( 5, 10 ) ),
-            'audience'     => $this->faker->sentence(),
+            'audience'     => $this->faker->name(),
             'visibility'       => $type[rand( 0, 1 )],
             'category_id'  => Category::all()->random()->id,
             'teacher_id'   => User::all()->random()->id,
+            'thumbnail'    => 'https://i.pravatar.cc/300?img=2',
         ];
     }
 }

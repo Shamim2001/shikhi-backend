@@ -39,7 +39,7 @@
                                 <th scope="col" class="text-center">Name</th>
                                 <th scope="col" class="text-center">Description</th>
                                 <th scope="col" class="text-center">Requirements</th>
-                                <th scope="col" class="w-25 text-center">Audience</th>
+                                <th scope="col" class="text-center">Audience</th>
                                 <th scope="col" class="text-center">Teacher</th>
                                 <th scope="col" class="text-center">Category</th>
                                 <th scope="col" class="text-center">Visibility</th>
@@ -49,13 +49,15 @@
                         <tbody>
                             @forelse ($courses as $course)
                                 <tr>
-                                    <td>{{ $course->thumbnail }}</td>
+                                    <td >
+                                        <img src="{{ $course->thumbnail }}" style="width: 70px"  alt="{{ $course->thumbnail }}">
+                                    </td>
                                     <td><a href="{{ route('course.show', $course) }}">{{ $course->name }}</a></td>
-                                    <td>{!! $course->description !!}</td>
-                                    <td>{{ $course->requirements }}</td>
-                                    <td>{{ $course->audience }}</td>
+                                    <td style="width: 25%">{!! $course->description !!}</td>
+                                    <td style="width: 18%">{{ $course->requirements }}</td>
+                                    <td style="width: 150px">{{ $course->audience }}</td>
                                     <td>{{ $course->teacher->name }}</td>
-                                    <td>{{ optional($course->category)->name }}</td>
+                                    <td> {{($course->category)->name }}</td>
                                     <td>{{ $course->visibility }}</td>
                                     <td>
                                         <div class="hstack gap-3 fs-15 justify-content-center">
