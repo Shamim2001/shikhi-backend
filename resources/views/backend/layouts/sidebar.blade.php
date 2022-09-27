@@ -77,7 +77,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('tag.*') ? 'active' : ''}}" href="{{ route('tag.index') }}">
-                        <i class=" las la-tags"></i> <span data-key="t-tags">Tags</span>
+                        <i class=" las la-tag"></i> <span data-key="t-tags">Tags</span>
                     </a>
                 </li> <!-- end Tags -->
                 <li class="nav-item">
