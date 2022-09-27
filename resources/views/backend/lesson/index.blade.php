@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 
-@section('title', 'Lesson')
+@section('title', 'Lessons')
 
 @section('content')
     <div class="page-content">

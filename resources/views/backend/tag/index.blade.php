@@ -38,6 +38,7 @@
                                 <th scope="col" class="text-center">#</th>
                                 <th scope="col" class="text-center">Name</th>
                                 <th scope="col" class="text-center">slug</th>
+                                <th scope="col" class="text-center">Course</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -47,6 +48,7 @@
                                     <td class="text-center">{{ $key+1 }}</td>
                                     <td class="text-center">{!! $tag->name !!}</td>
                                     <td class="text-center">{{ $tag->slug }}</td>
+                                    <td class="text-center">{{ $tag->course_id }}</td>
                                     <td>
                                         <div class="hstack gap-3 fs-15 justify-content-center">
                                             <a href="{{ route('tag.edit', $tag) }}" class="link-primary"><i

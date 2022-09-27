@@ -5,7 +5,8 @@
 <head>
 
     <meta charset="utf-8" />
-    @yield('title')
+    <title>@yield('title')</title>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
@@ -198,7 +199,7 @@
                             <button type="button"
                                 class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img id="header-lang-img" src="{{ asset('backend') }}/assets/images/flags/us.png" alt="Header Language"
+                                <img id="header-lang-img" src="{{ asset('backend') }}/assets/images/flags/us.svg" alt="Header Language"
                                     height="20" class="rounded">
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -206,7 +207,7 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language py-2"
                                     data-lang="en" title="English">
-                                    <img src="{{ asset('backend') }}/assets/images/flags/us.png" alt="user-image" class="me-2 rounded"
+                                    <img src="" alt="user-image" class="me-2 rounded"
                                         height="18">
                                     <span class="align-middle">English</span>
                                 </a>

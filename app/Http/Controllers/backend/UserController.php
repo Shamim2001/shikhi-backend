@@ -93,9 +93,9 @@ class UserController extends Controller {
     public function update( Request $request, User $user ) {
         $request->validate( [
             'name'      => 'required|max:100',
-            'username'  => 'required|max:100|unique:users',
+            'username'  => 'required|max:100|unique:users,username,'.$user->id,
             'email'     => 'required|max:100|email',
-            'password'  => 'required|max:100',
+            'password'  => 'nullable',
             'phone'     => 'required|max:20',
             'thumbnail' => 'required',
         ] );
