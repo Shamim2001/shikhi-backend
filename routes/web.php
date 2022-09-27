@@ -4,6 +4,7 @@ use App\Http\Controllers\backend\CategotyController;
 use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\LessonController;
+use App\Http\Controllers\backend\TagControllers;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\UserManagementController;
 use App\Models\Category;
@@ -22,6 +23,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 
     Route::resource('course', CourseController::class);
     Route::resource('category', CategotyController::class);
+    Route::resource('tag', TagControllers::class);
     Route::resource('user', UserController::class);
     Route::resource('lesson', LessonController::class);
 });

@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Category</h4>
+                        <h4 class="mb-sm-0">Tags</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
@@ -37,14 +37,14 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('category.update', $category) }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('tag.update', $tag) }}" method="POST" enctype="multipart/form-data"
                         class="row needs-validation">
                         @csrf
                         @method('PUT')
                         <div class="d-flex align-items-center gap-4">
                             <div class="position-relative w-75">
-                                <label for="name" class="form-label">Category Name</label>
-                                <input type="text" class="form-control" name="name" id="name" value="{{ $category->name }}"
+                                <label for="name" class="form-label">Tag Name</label>
+                                <input type="text" class="form-control" name="name" id="name" value="{{ $tag->name }}"
                                     placeholder="type here" required>
                                 <div class="">
                                     @error('name')

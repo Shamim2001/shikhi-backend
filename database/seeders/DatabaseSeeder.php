@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -31,9 +32,9 @@ class DatabaseSeeder extends Seeder
 
         // Category
         Category::factory(10)->create();
-
         // Course
         Course::factory(15)->create();
+        Tag::factory(10)->create();
         // Lesson
         Lesson::factory(10)->create();
     }

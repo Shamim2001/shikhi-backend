@@ -71,17 +71,23 @@
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('category.*') ? 'active' : ''}}" href="{{ route('category.index') }}">
-                        <i class=" las la-tag"></i> <span data-key="t-dashboards">Category</span>
+                        <i class=" las la-tag"></i> <span data-key="t-category">Category</span>
                     </a>
                 </li> <!-- end Category -->
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('tag.*') ? 'active' : ''}}" href="{{ route('tag.index') }}">
+                        <i class=" las la-tags"></i> <span data-key="t-tags">Tags</span>
+                    </a>
+                </li> <!-- end Tags -->
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('user.*') ? 'active' : ''}}" href="{{ route('user.index') }}">
-                        <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-dashboards">Users</span>
+                        <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-users">Users</span>
                     </a>
                 </li> <!-- end User -->
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('lesson.*') ? 'active' : ''}}" href="{{ route('lesson.index') }}" >
-                        <i class="las la-book-reader"></i> <span data-key="t-dashboards">Lessons</span>
+                        <i class="las la-book-reader"></i> <span data-key="t-lessons">Lessons</span>
                     </a>
                 </li> <!-- end Lesson -->
             </ul>
