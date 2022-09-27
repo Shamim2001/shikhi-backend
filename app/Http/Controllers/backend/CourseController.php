@@ -116,8 +116,6 @@ class CourseController extends Controller {
             'thumbnail'    => 'image|mimes:png,jpg,jpeg|max:2048',
         ] );
 
-
-
         // get default thumbnail
         $thumb = $course->thumbnail;
         // update new thumbnail
@@ -150,6 +148,10 @@ class CourseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy( Course $course ) {
+        $thumb = pathinfo( $course->thumbnail );
+        $image_ext = $thumb['basename'];
+
+        Storage::delete( 'public/uploads/courses/' . $image_ext );
         $course->delete();
 
         return redirect()->route( 'course.index' )->with( 'success', 'Courses Deleted Succesfull!' );

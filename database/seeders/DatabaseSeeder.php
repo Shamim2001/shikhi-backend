@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'shamim',
             'email' => 'admin@shikhi.test',
             'password' => bcrypt('123'),
+            'thumbnail' => 'https://i.pravatar.cc/300?img=2',
         ]);
 
         // Category

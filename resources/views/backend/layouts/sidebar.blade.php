@@ -34,7 +34,7 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('dashboard.index') }}">
+                    <a class="nav-link menu-link {{ request()->routeIs('dashboard.*') ? 'active' : ''}}" href="{{ route('dashboard.index') }}">
                         <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li> <!-- end Dashboard Menu -->
@@ -64,24 +64,24 @@
                 </li> <!-- end permission -->
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('course.index') }}">
-                        <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Courses</span>
+                    <a class="nav-link menu-link {{ request()->routeIs('course.*') ? 'active' : ''}}" href="{{ route('course.index') }}">
+                        <i class="las la-book-open "></i> <span data-key="t-dashboards">Courses</span>
                     </a>
                 </li> <!-- end courses -->
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('category.index') }}">
-                        <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-dashboards">Category</span>
+                    <a class="nav-link menu-link {{ request()->routeIs('category.*') ? 'active' : ''}}" href="{{ route('category.index') }}">
+                        <i class=" las la-tag"></i> <span data-key="t-dashboards">Category</span>
                     </a>
                 </li> <!-- end Category -->
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('user.index') }}">
+                    <a class="nav-link menu-link {{ request()->routeIs('user.*') ? 'active' : ''}}" href="{{ route('user.index') }}">
                         <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-dashboards">Users</span>
                     </a>
                 </li> <!-- end User -->
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('lesson.index') }}" {{ request()->routeIs('lesson.') ? 'active' : ''}}>
-                        <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-dashboards">Lessons</span>
+                    <a class="nav-link menu-link {{ request()->routeIs('lesson.*') ? 'active' : ''}}" href="{{ route('lesson.index') }}" >
+                        <i class="las la-book-reader"></i> <span data-key="t-dashboards">Lessons</span>
                     </a>
                 </li> <!-- end Lesson -->
             </ul>

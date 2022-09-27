@@ -37,133 +37,76 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data"
                         class="row g-3 needs-validation">
                         @csrf
-                        <div class="d-flex justify-content-between gap-4">
-                            <div class="flex-1">
-                                <div class="position-relative mb-5">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name" id="name"
-                                        placeholder="type course name" required>
-                                    <div class="">
-                                        @error('name')
-                                            <p class="text-denger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <!-- description -->
-                                <div class="mb-5 position-relative">
-                                    <label for="description" class="form-label">Description</label>
-                                    <textarea name="description" id="description"></textarea>
-                                    <div class="valid-tooltip">
-                                        @error('description')
-                                            <p class="text-denger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <!-- image upload-->
-                                <div class="mb-5 position-relative">
-                                    <label for="thumbnail" class="form-label">Thumbnail</label>
-                                    <div class="">
-                                        <input type="file" name="thumbnail" id="thumbnail">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-25 mt-4">
-                                <!-- requirements -->
-                                <div class="col-md-4 position-relative mb-4 visibility_">
-                                    <div class="border-bottom text-center ">
-                                        <h4 class="text-black">Requirements</h4>
-                                    </div>
-                                    <input type="text" class="form-control py-5" name="requirements" id="requirements"
-                                        placeholder="type requirement" required>
-                                    <div class="valid-tooltip">
-                                        @error('requirements')
-                                            <p class="text-denger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <!-- Visibility -->
-                                <div class="col-md-3 position-relative mb-4 visibility_">
-                                    <div class="border-bottom text-center ">
-                                        <h4 class="text-black">Visibility</h4>
-                                    </div>
-                                    <!-- Custom Radio Color -->
-                                    <div class="form-check form-radio-primary py-2">
-                                        <label class="form-check-label" for="public">
-                                            <input class="form-check-input" type="radio" name="visibility" id="public"
-                                                value="public" checked>
-                                            <label for="public">public</label>
-                                        </label>
-                                    </div>
-
-                                    <!-- Custom Radio Color -->
-                                    <div class="form-check form-radio-primary">
-                                        <label class="form-check-label" for="private">
-                                            <input class="form-check-input" type="radio" name="visibility" id="private"
-                                                value="private" checked>
-                                            <label for="private">Private</label>
-                                        </label>
-                                    </div>
-                                    <div class="mt-2">
-                                        <button class="btn btn-primary w-100" type="submit">Create</button>
-                                    </div>
-
-                                    @error('visibility')
-                                        <p class="text-denger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-
-                                <!-- Category -->
-                                <div class="col-md-4 position-relative mb-4 visibility_">
-                                    <div class="border-bottom text-center ">
-                                        <h4 class="text-black">Category</h4>
-                                    </div>
-
-                                    @foreach ($categories as $category)
-                                        <div class="form-check py-2">
-                                            <input class="form-check-input" type="checkbox" name="category_id"
-                                                id="category_id" value="{{ $category->id }}">
-                                            <label class="form-check-label" for="category_id">
-                                                {{ $category->name }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-
-                                    <div class="mt-3 text-center">
-                                        <a href="#">Add New Category</a>
-                                    </div>
-                                    <div class="valid-tooltip">
-                                        @error('category_id')
-                                            <p class="text-denger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <!-- audience -->
-                                <div class="col-md-4 position-relative mb-4 visibility_">
-                                    <div class="border-bottom text-center ">
-                                        <h4 class="text-black">Audience</h4>
-                                    </div>
-                                    <input type="text" class="form-control py-5" name="audience" id="audience"
-                                        placeholder="type requirement" required>
-                                    <div class="valid-tooltip">
-                                        @error('audience')
-                                            <p class="text-denger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
+                        <div class=" col-md-6 position-relative mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" name="name" id="name"
+                                placeholder="type course name" required>
+                            <div class="">
+                                @error('name')
+                                    <p class="text-denger">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
+                        <div class=" col-md-6 position-relative mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control lowercase" name="username" id="username"
+                                placeholder="type heree" required>
+                            <div class="">
+                                @error('username')
+                                    <p class="text-denger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class=" col-md-6 position-relative mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" id="password"
+                                placeholder="type course name" required>
+                            <div class="">
+                                @error('password')
+                                    <p class="text-denger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class=" col-md-6 position-relative mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control" name="email" id="email"
+                                placeholder="type course name" required>
+                            <div class="">
+                                @error('email')
+                                    <p class="text-denger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class=" col-md-6 position-relative mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" class="form-control" name="phone" id="phone"
+                                placeholder="type course name" required>
+                            <div class="">
+                                @error('phone')
+                                    <p class="text-denger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <!-- image upload-->
+                        <div class=" col-md-6 position-relative mb-3">
+                            <label for="thumbnail" class="form-label">Thumbnail</label>
+                            <div class="">
+                                <input type="file" name="thumbnail" id="thumbnail">
+                            </div>
+                            <div class="">
+                                @error('phone')
+                                    <p class="text-denger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mt-2text-end">
+                            <button class="btn btn-primary" type="submit">Create</button>
+                        </div>
                     </form>
-
-
-
-
                 </div>
             </div>
         </div>

@@ -35,7 +35,7 @@
                     <table class="table table-bordered ">
                         <thead>
                             <tr>
-                                <th scope="col" class="text-center">Thumbnail</th>
+                                <th scope="col" class="text-center" style="width: 100px">Thumbnail</th>
                                 <th scope="col" class="text-center">Name</th>
                                 <th scope="col" class="text-center">User Name</th>
                                 <th scope="col" class="text-center">Email</th>
@@ -50,7 +50,7 @@
                                         <img src="{{ $user->thumbnail }}" style="width: 70px"  alt="{{ $user->thumbnail }}">
                                     </td>
                                     <td><a href="{{ route('user.show', $user) }}">{{ $user->name }}</a></td>
-                                    <td class="text-center">{{ $user->username }}</td>
+                                    <td class="text-center">{{ Str::lower($user->username) }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>
