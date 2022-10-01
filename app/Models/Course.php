@@ -15,7 +15,7 @@ class Course extends Model
     // User Relation one to ne Relationship
     public function teacher()
     {
-        return $this->belongsTo(User::class, 'teacher_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
 
@@ -27,13 +27,13 @@ class Course extends Model
 
 
     // Accessor
-    public function getThumbnailAttribute( $name ) {
-        if ( str_starts_with( $name, 'http' ) ) {
-            return $name;
-        } else {
-            return asset( 'storage/uploads/courses/' . $name );
-        }
-    }
+    // public function getThumbnailAttribute( $name ) {
+    //     if ( str_starts_with( $name, 'http' ) ) {
+    //         return $name;
+    //     } else {
+    //         return asset( 'storage/uploads/courses/' . $name );
+    //     }
+    // }
 
 
     // Change default Route name

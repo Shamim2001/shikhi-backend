@@ -35,18 +35,15 @@
 <script src="{{ asset('backend') }}/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
 <script src="{{ asset('backend') }}/assets/js/plugins.js"></script>
 
-<!-- dropzone min -->
-    <script src="{{ asset('backend') }}/assets/libs/dropzone/dropzone-min.js"></script>
+
 <!-- filepond js -->
-<script src="{{ asset('backend') }}/assets/libs/filepond/filepond.min.js"></script>
-<script src="{{ asset('backend') }}/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
-<script src="{{ asset('backend') }}/assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js"></script>
-<script src="{{ asset('backend') }}/assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js"></script>
-<script src="{{ asset('backend') }}/assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js"></script>
+ <!-- Add plugin scripts -->
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
 
-<script src="{{ asset('backend') }}/assets/js/pages/form-file-upload.init.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
-<script src="{{ asset('backend') }}/assets/js/app.js"></script>
 
 <!-- App js -->
 <script src="{{ asset('backend') }}/assets/js/app.js"></script>

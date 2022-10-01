@@ -18,7 +18,7 @@ class CourseController extends Controller {
      */
     public function index() {
         return view( 'backend.course.index' )->with( [
-            'courses' => Course::orderBy( 'name' )->paginate( 5 ),
+            'courses' => Course::orderBy( 'name' )->paginate( 10 ),
         ] );
     }
 
@@ -56,7 +56,7 @@ class CourseController extends Controller {
             $thumb = time() . '-' . $request->file( 'thumbnail' )->getClientOriginalName();
             $thumb = str_replace( ' ', '-', $thumb );
 
-            $request->file( 'thumbnail' )->storeAs( 'public/uploads/courses', $thumb );
+            $request->file( 'thumbnail' )->storeAs( 'public/uploads/course', $thumb );
         }
 
         Course::create( [
@@ -123,7 +123,7 @@ class CourseController extends Controller {
             Storage::delete( 'public/uploads/courses' . $thumb ); // delete the old image
             $filename = strtolower( str_replace( ' ', '-', $request->file( 'thumbnail' )->getClientOriginalName() ) );
             $thumb = time() . '-' . $filename;
-            $request->file( 'thumbnail' )->storeAs( 'public/uploads/courses', $thumb );
+            $request->file( 'thumbnail' )->storeAs( 'public/uploads/course', $thumb );
         }
 
         $course->update( [
@@ -151,7 +151,7 @@ class CourseController extends Controller {
         $thumb = pathinfo( $course->thumbnail );
         $image_ext = $thumb['basename'];
 
-        Storage::delete( 'public/uploads/courses/' . $image_ext );
+        Storage::delete( 'public/uploads/course/' . $image_ext );
         $course->delete();
 
         return redirect()->route( 'course.index' )->with( 'success', 'Courses Deleted Succesfull!' );

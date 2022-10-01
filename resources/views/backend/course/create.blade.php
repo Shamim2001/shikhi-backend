@@ -22,10 +22,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Courses</h4>
+                        <h4 class="mb-sm-0">Add Course</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('course.index') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item active">Create</li>
                             </ol>
                         </div>
@@ -94,19 +94,19 @@
                                     </div>
                                     <!-- Custom Radio Color -->
                                     <div class="form-check form-radio-primary py-2">
-                                        <label class="form-check-label" for="public">
-                                            <input class="form-check-input" type="radio" name="visibility" id="public"
-                                                value="public" checked>
-                                            <label for="public">public</label>
+                                        <label class="form-check-label" for="active">
+                                            <input class="form-check-input" type="radio" name="visibility" id="active"
+                                                value="active" checked>
+                                            <label for="active">Active</label>
                                         </label>
                                     </div>
 
                                     <!-- Custom Radio Color -->
                                     <div class="form-check form-radio-primary">
-                                        <label class="form-check-label" for="private">
-                                            <input class="form-check-input" type="radio" name="visibility" id="private"
-                                                value="private" checked>
-                                            <label for="private">Private</label>
+                                        <label class="form-check-label" for="inactive">
+                                            <input class="form-check-input" type="radio" name="visibility" id="inactive"
+                                                value="inactive" checked>
+                                            <label for="inactive">Inactive</label>
                                         </label>
                                     </div>
                                     <div class="mt-2">
@@ -180,6 +180,19 @@
             toolbar_mode: 'floating',
             tinycomments_mode: 'embedded',
             tinycomments_author: 'Author name',
+        });
+        // register the plugins with FilePond
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview,
+            FilePondPluginImageResize,
+            FilePondPluginImageTransform
+        );
+
+        const inputElement = document.querySelector('#thumbnail');
+        const pond = FilePond.create(inputElement);
+
+        FilePond.setOptions({
+            storeAsFile: true
         });
     </script>
 @endsection

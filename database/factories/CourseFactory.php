@@ -17,18 +17,18 @@ class CourseFactory extends Factory {
      * @return array<string, mixed>
      */
     public function definition() {
-        $name = $this->faker->name();
-        $type = ['public', 'private'];
+        $name = fake()->sentence(rand(2, 5));
+        $type = ['active', 'inactive'];
         return [
             'name'         => $name,
             'slug'         => Str::slug( $name ),
-            'description'  => $this->faker->sentence( rand( 5, 10 ) ),
-            'requirements' => $this->faker->sentence( rand( 5, 10 ) ),
-            'audience'     => $this->faker->name(),
-            'visibility'       => $type[rand( 0, 1 )],
+            'description'  => fake()->paragraphs( rand( 1, 3), true ),
+            'requirements'  => fake()->paragraphs( rand( 1, 3), true ),
+            'audience'      => fake()->paragraphs( rand( 1, 3), true ),
+            'visibility'   => $type[rand( 0, 1 )],
             'category_id'  => Category::all()->random()->id,
-            'teacher_id'   => User::all()->random()->id,
-            'thumbnail'    => 'https://i.pravatar.cc/300?img=2',
+            'teacher_id'   => 1,
+            'thumbnail'    => 'https://source.unsplash.com/random/400x250?bool,library&'.rand(2,242343),
         ];
     }
 }
