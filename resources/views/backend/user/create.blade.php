@@ -95,10 +95,10 @@
                         <div class=" col-md-6 position-relative mb-3">
                             <label for="thumbnail" class="form-label">Thumbnail</label>
                             <div class="">
-                                <input type="file" name="thumbnail" id="thumbnail">
+                                 <input class="filepond" type="file" name="thumbnail">
                             </div>
                             <div class="">
-                                @error('phone')
+                                @error('thumbnail')
                                     <p class="text-denger">{{ $message }}</p>
                                 @enderror
                             </div>

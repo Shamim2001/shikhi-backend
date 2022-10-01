@@ -35,18 +35,35 @@
 <script src="{{ asset('backend') }}/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
 <script src="{{ asset('backend') }}/assets/js/plugins.js"></script>
 
-<!-- dropzone min -->
-    <script src="{{ asset('backend') }}/assets/libs/dropzone/dropzone-min.js"></script>
-<!-- filepond js -->
-<script src="{{ asset('backend') }}/assets/libs/filepond/filepond.min.js"></script>
-<script src="{{ asset('backend') }}/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
-<script src="{{ asset('backend') }}/assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js"></script>
-<script src="{{ asset('backend') }}/assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js"></script>
-<script src="{{ asset('backend') }}/assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js"></script>
+{{-- @if ( request()->routeIs('*create*') ) --}}
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js">
+    </script>
+    <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
 
-<script src="{{ asset('backend') }}/assets/js/pages/form-file-upload.init.js"></script>
-
-<script src="{{ asset('backend') }}/assets/js/app.js"></script>
+    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+    <script>
+        FilePond.registerPlugin(
+            FilePondPluginFileEncode,
+            FilePondPluginFileValidateSize,
+            FilePondPluginFileValidateType,
+            FilePondPluginImageCrop,
+            FilePondPluginImagePreview,
+            FilePondPluginImageExifOrientation,
+            FilePondPluginImageResize,
+            FilePondPluginImageEdit
+        );
+        $('.filepond').filepond({
+            storeAsFile: true
+        });
+    </script>
+{{-- @endif --}}
 
 <!-- App js -->
 <script src="{{ asset('backend') }}/assets/js/app.js"></script>

@@ -14,10 +14,14 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('backend') }}/assets/images/favicon.ico">
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/dropzone/dropzone.css" type="text/css" />
-    <!-- Filepond css -->
-    <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/filepond/filepond.min.css" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
 
+     {{-- @if ( request()->routeIs('*edit*') ) --}}
+    <!-- Filepond css -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+
+    <!-- Add plugin styles -->
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+    {{-- @endif --}}
 
     <!-- tiny editor Js -->
      <script src="https://cdn.tiny.cloud/1/y5ceq8cxh6oivxq371ywid0ezemdwg185q879rp22231kpik/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>

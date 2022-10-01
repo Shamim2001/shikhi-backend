@@ -10,6 +10,7 @@ use App\Models\Lesson;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        Role::create( ['name' => 'SuperAdmin'] );
+        Role::create( ['name' => 'student'] );
+        Role::create( ['name' => 'teacher'] );
 
         User::factory()->create([
             'name' => 'Shamim Ahmed',
@@ -28,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@shikhi.test',
             'password' => bcrypt('123'),
             'thumbnail' => 'https://i.pravatar.cc/300?img=2',
-        ]);
+        ])->assignRole('SuperAdmin');
 
         // Category
         Category::factory(10)->create();
