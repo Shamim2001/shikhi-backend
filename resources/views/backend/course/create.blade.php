@@ -45,10 +45,10 @@
                                 <div class="position-relative mb-5">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" class="form-control" name="name" id="name"
-                                        placeholder="type course name" required>
-                                    <div class="">
+                                        placeholder="type here" required>
+                                    <div class="mt-3">
                                         @error('name')
-                                            <p class="text-denger">{{ $message }}</p>
+                                            <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
@@ -57,38 +57,82 @@
                                 <div class="mb-5 position-relative">
                                     <label for="description" class="form-label">Description</label>
                                     <textarea name="description" id="description"></textarea>
-                                    <div class="valid-tooltip">
+                                    <div class="mt-2">
                                         @error('description')
                                             <p class="text-denger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
-
-                                <!-- image upload-->
+                                <!-- requirement -->
                                 <div class="mb-5 position-relative">
-                                    <label for="thumbnail" class="form-label">Thumbnail</label>
-                                    <div class="">
-                                        <input type="file" name="thumbnail" id="thumbnail">
+                                    <label for="requirements" class="form-label">Requirement</label>
+                                    <textarea name="requirements" id="requirement"></textarea>
+                                    <div class="mt-2">
+                                        @error('requirement')
+                                            <p class="text-denger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
-                            </div>
-                            <div class="w-25 mt-4">
-                                <!-- requirements -->
-                                <div class="col-md-4 position-relative mb-4 visibility_">
-                                    <div class="border-bottom text-center ">
-                                        <h4 class="text-black">Requirements</h4>
-                                    </div>
-                                    <input type="text" class="form-control py-5" name="requirements" id="requirements"
-                                        placeholder="type requirement" required>
-                                    <div class="valid-tooltip">
-                                        @error('requirements')
+                                <!-- Audience -->
+                                <div class="mb-5 position-relative">
+                                    <label for="audience" class="form-label">Audience</label>
+                                    <textarea name="audience" id="audience"></textarea>
+                                    <div class="mt-2">
+                                        @error('audience')
                                             <p class="text-denger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
 
+
+                            </div>
+                            <div class="w-25 mt-4">
+
+                                <div class="card mb-5">
+                                    <div class="card-header text-center">
+                                        <h4 class="card-title mb-0 text-black">Category</h4>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+                                        <div class="mx-n3">
+                                            <div data-simplebar data-simplebar-auto-hide="false"
+                                                data-simplebar-track="secondary" style="max-height: 274px;">
+                                                <div class="list-group list-group-flush px-4">
+                                                    @foreach ($categories as $category)
+                                                        <div class="form-check py-2">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="category_id" id="category_id"
+                                                                value="{{ $category->id }}">
+                                                            <label class="form-check-label" for="category_id">
+                                                                {{ $category->name }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+
+                                                    <div class="mt-3 text-center">
+                                                        <a href="#">Add New Category</a>
+                                                    </div>
+                                                    <div class="mt-2">
+                                                        @error('category_id')
+                                                            <p class="text-denger">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card-body -->
+                                </div><!-- end card -->
+
+                                <!-- image upload-->
+                                <div class="mb-5 position-relative">
+                                    <label for="thumbnail" class="form-label" style="font-size: 1rem">Thumbnail</label>
+                                    <div class="">
+                                        <input type="file" name="thumbnail" id="thumbnail">
+                                    </div>
+                                </div>
+
                                 <!-- Visibility -->
-                                <div class="col-md-3 position-relative mb-4 visibility_">
+                                <div class="col-md-3 position-relative mb-5 visibility_">
                                     <div class="border-bottom text-center ">
                                         <h4 class="text-black">Visibility</h4>
                                     </div>
@@ -116,46 +160,6 @@
                                     @error('visibility')
                                         <p class="text-denger">{{ $message }}</p>
                                     @enderror
-                                </div>
-
-                                <!-- Category -->
-                                <div class="col-md-4 position-relative mb-4 visibility_">
-                                    <div class="border-bottom text-center ">
-                                        <h4 class="text-black">Category</h4>
-                                    </div>
-
-                                    @foreach ($categories as $category)
-                                        <div class="form-check py-2">
-                                            <input class="form-check-input" type="checkbox" name="category_id"
-                                                id="category_id" value="{{ $category->id }}">
-                                            <label class="form-check-label" for="category_id">
-                                                {{ $category->name }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-
-                                    <div class="mt-3 text-center">
-                                        <a href="#">Add New Category</a>
-                                    </div>
-                                    <div class="valid-tooltip">
-                                        @error('category_id')
-                                            <p class="text-denger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <!-- audience -->
-                                <div class="col-md-4 position-relative mb-4 visibility_">
-                                    <div class="border-bottom text-center ">
-                                        <h4 class="text-black">Audience</h4>
-                                    </div>
-                                    <input type="text" class="form-control py-5" name="audience" id="audience"
-                                        placeholder="type requirement" required>
-                                    <div class="valid-tooltip">
-                                        @error('audience')
-                                            <p class="text-denger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
                                 </div>
                             </div>
                         </div>

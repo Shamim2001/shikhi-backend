@@ -31,13 +31,13 @@ class User extends Authenticatable
 
 
     // Accessor
-    // public function getThumbnailAttribute( $name ) {
-    //     if ( str_starts_with( $name, 'http' ) ) {
-    //         return $name;
-    //     } else {
-    //         return asset( 'storage/uploads/courses/' . $name );
-    //     }
-    // }
+    public function getThumbnailAttribute( $name ) {
+        if ( str_starts_with( $name, 'http' ) ) {
+            return $name;
+        } else {
+            return asset( 'storage/uploads/course/' . $name );
+        }
+    }
 
     /**
      * The attributes that should be cast.
