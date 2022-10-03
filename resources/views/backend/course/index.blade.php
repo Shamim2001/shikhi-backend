@@ -48,8 +48,10 @@
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td class="text-center">
-                                        <img src="{{ $course->thumbnail }}"
-                                            class="avatar-xs rounded-circle" alt="">
+                                        <img src="{{ getAssetUrl($course->thumbnail, 'uploads/course') }}"
+                                    class="avatar-xs rounded-circle" alt="{{ $course->name }}">
+                                        {{-- <img src="{{ $course->thumbnail }}"
+                                            class="avatar-xs rounded-circle" alt=""> --}}
                                     </td>
                                     <td class="text-center"><a
                                             href="{{ route('course.show', $course) }}">{{ $course->name }}</a></td>
