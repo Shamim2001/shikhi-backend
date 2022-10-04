@@ -14,6 +14,6 @@ class Lesson extends Model
     // Course one to one relationships
     public function course()
     {
-        $this->belongsTo(Course::class);
+        return $this->belongsTo(Course::class);
     }
 }

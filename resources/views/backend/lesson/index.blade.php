@@ -38,7 +38,7 @@
                                 <th scope="col" class="text-center">#</th>
                                 <th scope="col" class="text-center">Name</th>
                                 <th scope="col" class="text-center">Content</th>
-                                <th scope="col" class="text-center">lesson_id</th>
+                                <th scope="col" class="text-center">Course_id</th>
                                 <th scope="col" class="text-center">Visibility</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
@@ -49,7 +49,7 @@
                                     <td >{{ $key+1 }}</td>
                                     <td><a href="{{ route('lesson.show', $lesson) }}">{{ $lesson->name }}</a></td>
                                     <td style="width: 25%">{{ $lesson->content }}</td>
-                                    <td>{{ $lesson->course_id }}</td>
+                                    <td>{{ $lesson->course->name }}</td>
                                     <td>{{ $lesson->visibility }}</td>
                                     <td>
                                         <div class="hstack gap-3 fs-15 justify-content-center">

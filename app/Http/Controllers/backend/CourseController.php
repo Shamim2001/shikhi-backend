@@ -5,6 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use Brian2694\Toastr\Facades\Toastr;
+use Brian2694\Toastr\Toastr as ToastrToastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -71,7 +73,7 @@ class CourseController extends Controller {
             'thumbnail'    => $thumb,
         ] );
 
-        return redirect()->route( 'course.index' );
+        return redirect()->route( 'course.index' )->with('success', 'Course created Successfull');
     }
 
     /**
@@ -138,7 +140,7 @@ class CourseController extends Controller {
             'thumbnail'    => $thumb,
         ] );
 
-        return redirect()->route( 'course.index' )->with( 'success', 'Courses Updated Succefully' );
+        return redirect()->route( 'course.index' )->with( 'success', 'Course Updated Succefull' );
     }
 
     /**
@@ -154,6 +156,6 @@ class CourseController extends Controller {
         Storage::delete( 'public/uploads/course/' . $image_ext );
         $course->delete();
 
-        return redirect()->route( 'course.index' )->with( 'success', 'Courses Deleted Succesfull!' );
+        return redirect()->route( 'course.index' )->with( 'error', 'Course has been Deleted!' );
     }
 }
