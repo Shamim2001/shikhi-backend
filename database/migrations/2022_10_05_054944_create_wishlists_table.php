@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 125);
-            $table->string('slug', 125)->unique();
-            $table->mediumText('content');
-            $table->enum('visibility', ['private', 'public'])->default('public');
+            $table->foreignId('student_id');
             $table->foreignId('course_id');
             $table->timestamps();
         });
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('wishlists');
     }
 };

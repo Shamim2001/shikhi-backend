@@ -3,11 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Wishlist>
  */
-class CategoryFactory extends Factory
+class WishlistFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,10 +16,8 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        $name = fake()->name();
         return [
-            'name'         => $name,
-            'slug'         => Str::slug( $name ),
+            //
         ];
     }
 }

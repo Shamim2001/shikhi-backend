@@ -38,7 +38,7 @@
                                 <th scope="col" class="text-center">#</th>
                                 <th scope="col" class="text-center">Name</th>
                                 <th scope="col" class="text-center">Content</th>
-                                <th scope="col" class="text-center">Course_id</th>
+                                <th scope="col" class="text-center">Course Name</th>
                                 <th scope="col" class="text-center">Visibility</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
