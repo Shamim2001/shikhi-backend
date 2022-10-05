@@ -48,7 +48,7 @@
                                     <td class="text-center">{!! $tag->name !!}</td>
                                     <td class="text-center">{{ $tag->slug }}</td>
                                     <td>
-                                        <div class="hstack gap-3 fs-15 justify-content-center">
+                                        <div class="hstack gap-3 fs-19 justify-content-center">
                                             <a href="{{ route('tag.edit', $tag) }}" class="link-primary"><i
                                                     class="ri-edit-fill "></i></a>
 
@@ -57,7 +57,7 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" class="link-danger"><i
+                                                <button style="border: none;" type="submit" class="link-danger"><i
                                                         class="ri-delete-bin-5-line"></i></button>
                                             </form>
                                         </div>

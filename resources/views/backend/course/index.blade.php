@@ -67,7 +67,7 @@
                                     </td>
                                     <td class="text-center">{{ $course->visibility }}</td>
                                     <td class="text-center">
-                                        <div class="hstack gap-3 fs-15 justify-content-center">
+                                        <div class="hstack gap-3 fs-19 justify-content-center">
                                             <a href="{{ route('course.edit', $course) }}" class="link-primary fs-18"><i
                                                     class="ri-edit-fill "></i></a>
                                             <a href="javascript:void(0);" class="link-success fs-18"><i
@@ -77,7 +77,7 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" class="link-danger fs-18"><i
+                                                <button style="border: none;" type="submit" class="link-danger" ><i
                                                         class="ri-delete-bin-5-line"></i></button>
                                             </form>
                                         </div>

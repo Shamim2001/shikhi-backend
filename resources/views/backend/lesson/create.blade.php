@@ -44,8 +44,8 @@
                             <div class="flex-1">
                                 <div class="position-relative mb-5">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name" id="name"
-                                        placeholder="type course name" required>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}"
+                                        placeholder="type here" required>
                                     <div class="">
                                         @error('name')
                                             <p class="text-denger">{{ $message }}</p>
@@ -53,12 +53,11 @@
                                     </div>
                                 </div>
 
-                                <!-- requirements -->
-                                <div class="position-relative mb-4 ">
+                                <!-- Contents -->
+                                <div class="mb-5 position-relative">
                                     <label for="content" class="form-label">Content</label>
-                                    <input type="text" class="form-control py-5" name="content" id="content"
-                                        placeholder="type here" required>
-                                    <div class="">
+                                    <textarea name="content" id="content"></textarea>
+                                    <div class="mt-2">
                                         @error('content')
                                             <p class="text-denger">{{ $message }}</p>
                                         @enderror
@@ -66,6 +65,41 @@
                                 </div>
                             </div>
                             <div class="w-25 mt-4">
+                                <div class="card mb-5">
+                                    <div class="card-header text-center">
+                                        <h4 class="card-title mb-0 text-black">Courses</h4>
+                                    </div><!-- end card header -->
+
+                                    <div class="card-body">
+                                        <div class="mx-n3">
+                                            <div data-simplebar data-simplebar-auto-hide="false"
+                                                data-simplebar-track="secondary" style="max-height: 274px;">
+                                                <div class="list-group list-group-flush px-4">
+
+                                                    @foreach ($courses as $course)
+                                                        <div class="form-check py-2">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="course_id" id="course_id"
+                                                                value="{{ $course->id }}">
+                                                            <label class="form-check-label" for="course_id">
+                                                                {{ $course->name }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+
+                                                    <div class="mt-3 text-center">
+                                                        <a href="#">Add New Course</a>
+                                                    </div>
+                                                    <div class="mt-2">
+                                                        @error('course_id')
+                                                            <p class="text-denger">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card-body -->
+                                </div><!-- end card -->
 
                                 <!-- Visibility -->
                                 <div class="col-md-3 position-relative mb-4 visibility_">

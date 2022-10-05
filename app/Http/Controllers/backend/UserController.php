@@ -33,7 +33,6 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store( Request $request ) {
-        // dd($request->all());
         $request->validate( [
             'name'      => 'required|max:100',
             'username'  => 'required|max:100|unique:users',
@@ -48,7 +47,7 @@ class UserController extends Controller {
             $thumb = time() . '-' . $request->file( 'thumbnail' )->getClientOriginalName();
             $thumb = str_replace( ' ', '-', $thumb );
 
-            $request->file( 'thumbnail' )->storeAs( 'public/uploads/courses', $thumb );
+            $request->file( 'thumbnail' )->storeAs( 'public/uploads/course', $thumb );
         }
 
         User::create( [
@@ -132,10 +131,10 @@ class UserController extends Controller {
 
         $thumb = pathinfo( $user->thumbnail );
         $image_ext = $thumb['basename'];
-        Storage::delete( 'public/uploads/courses/' . $image_ext );
+        Storage::delete( 'public/uploads/course/' . $image_ext );
 
         $user->delete();
 
-        return redirect()->route('user.index')->with('success', 'User has been Deleted!');
+        return redirect()->route( 'user.index' )->with( 'success', 'User has been Deleted!' );
     }
 }
