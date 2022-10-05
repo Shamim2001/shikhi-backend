@@ -90,6 +90,12 @@
                         <i class="las la-book-reader"></i> <span data-key="t-lessons">Lessons</span>
                     </a>
                 </li> <!-- end Lesson -->
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('review.*') ? 'active' : ''}}" href="{{ route('review.index') }}" >
+                        <i class="las la-star "></i> <span data-key="t-lessons">Reviews</span>
+                    </a>
+                </li> <!-- end review -->
             </ul>
         </div>
         <!-- Sidebar -->

@@ -25,6 +25,11 @@ class Course extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+    public function review()
+    {
+        return $this->hasMany(Review::class);
+    }
+
 
     // Change default Route name
     public function getRouteKeyName()
