@@ -18,13 +18,18 @@ class Course extends Model
         return $this->belongsTo(User::class);
     }
 
-
     // Category one to one Relationship
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+    public function lesson()
+    {
+        return $this->hasMany(Lesson::class);
+    }
+
+    // Review one to many relationship
     public function review()
     {
         return $this->hasMany(Review::class);

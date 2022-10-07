@@ -15,4 +15,14 @@ class ApiController extends Controller
             'courses' => Course::get(),
         ];
     }
+
+    // Course Enroll
+    public function coursesEnroll()
+    {
+        return [
+            'error' => false,
+            'user'  => auth()->user(),
+            'course' => Course::get()
+        ];
+    }
 }

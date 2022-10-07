@@ -8,7 +8,7 @@
                 <img src="{{ asset('backend') }}/assets/images/logo-sm.png" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <h1 class="text-white p-3">Shikhi</h1>
+                <img src="{{ asset('backend') }}/assets/images/shikhi.png" alt=""  height="70">
             </span>
         </a>
         <!-- Light Logo-->
@@ -17,7 +17,7 @@
                 <img src="{{ asset('backend') }}/assets/images/logo-sm.png" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <h1 class="text-white p-3">Shikhi</h1>
+                <img src="{{ asset('backend') }}/assets/images/shikhi.png" alt="" height="70">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
