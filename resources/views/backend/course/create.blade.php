@@ -56,7 +56,7 @@
                                 <!-- description -->
                                 <div class="mb-5 position-relative">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea name="description" id="description"></textarea>
+                                    <x-tinymce-editor name="description" ></x-tinymce-editor>
                                     <div class="mt-2">
                                         @error('description')
                                             <p class="text-denger">{{ $message }}</p>
@@ -66,7 +66,7 @@
                                 <!-- requirement -->
                                 <div class="mb-5 position-relative">
                                     <label for="requirements" class="form-label">Requirement</label>
-                                    <textarea name="requirements" id="requirement"></textarea>
+                                    <x-tinymce-editor name="requirements" ></x-tinymce-editor>
                                     <div class="mt-2">
                                         @error('requirement')
                                             <p class="text-denger">{{ $message }}</p>
@@ -76,7 +76,7 @@
                                 <!-- Audience -->
                                 <div class="mb-5 position-relative">
                                     <label for="audience" class="form-label">Audience</label>
-                                    <textarea name="audience" id="audience"></textarea>
+                                    <x-tinymce-editor name="audience" ></x-tinymce-editor>
                                     <div class="mt-2">
                                         @error('audience')
                                             <p class="text-denger">{{ $message }}</p>
@@ -177,14 +177,7 @@
 
 @section('script')
     <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
-            toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
-            toolbar_mode: 'floating',
-            tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name',
-        });
+
         // register the plugins with FilePond
         FilePond.registerPlugin(
             FilePondPluginImagePreview,

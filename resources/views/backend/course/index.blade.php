@@ -48,7 +48,7 @@
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td class="text-center">
-                                        <img src="{{ getAssetUrl($course->thumbnail, 'uploads/course') }}"
+                                        <img src="{{ getAssetUrl($course->thumbnail, 'storage/uploads/course') }}"
                                     class="avatar-xs rounded-circle" alt="{{ $course->name }}">
 
                                     </td>

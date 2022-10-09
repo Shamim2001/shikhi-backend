@@ -45,8 +45,8 @@
                             <div class="flex-1">
                                 <div class="position-relative mb-5">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{ $course->name }}"
-                                        placeholder="type course name" required>
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        value="{{ $course->name }}" placeholder="type course name" required>
                                     <div class="">
                                         @error('name')
                                             <p class="text-danger">{{ $message }}</p>
@@ -57,7 +57,8 @@
                                 <!-- description -->
                                 <div class="mb-5 position-relative">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea name="description" id="description" >{{ $course->description }}</textarea>
+                                    <x-tinymce-editor name="description">{!! $course->description !!}</x-tinymce-editor>
+
                                     <div class="mt-2">
                                         @error('description')
                                             <p class="text-danger">{{ $message }}</p>
@@ -68,7 +69,8 @@
                                 <!-- requirement -->
                                 <div class="mb-5 position-relative">
                                     <label for="requirements" class="form-label">Requirement</label>
-                                    <textarea name="requirements" id="requirement">{{ $course->requirements }}</textarea>
+                                    <x-tinymce-editor name="requirements">{!! $course->requirements !!}</x-tinymce-editor>
+
                                     <div class="mt-2">
                                         @error('requirement')
                                             <p class="text-danger">{{ $message }}</p>
@@ -78,7 +80,7 @@
                                 <!-- Audience -->
                                 <div class="mb-5 position-relative">
                                     <label for="audience" class="form-label">Audience</label>
-                                    <textarea name="audience" id="audience">{{ $course->audience }}</textarea>
+                                    <x-tinymce-editor name="audience">{!! $course->audience !!}</x-tinymce-editor>
                                     <div class="mt-2">
                                         @error('audience')
                                             <p class="text-danger">{{ $message }}</p>
@@ -102,7 +104,8 @@
                                                         <div class="form-check py-2">
                                                             <input class="form-check-input" type="checkbox"
                                                                 name="category_id" id="category_id"
-                                                                value="{{ $category->id }}" {{ $course->category->id ==  $category->id ? 'checked' : ''  }}>
+                                                                value="{{ $category->id }}"
+                                                                {{ $course->category->id == $category->id ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="category_id">
                                                                 {{ $category->name }}
                                                             </label>
@@ -127,50 +130,46 @@
                                 <div class="mb-5 position-relative">
                                     <label for="thumbnail" class="form-label" style="font-size: 1rem">Thumbnail</label>
                                     <div class="card">
-                                        @if ("{{ url('storage/uploads/course/.$course->thumbnail') }}")
-                                            <img src="{{ $course->thumbnail }}">
-                                        @else
-                                            <p>No image found</p>
-                                        @endif
-                                            <input type="file" name="thumbnail" id="thumbnail" value="{{ $course->thumbnail }}"/>
+                                        <input type="file" name="thumbnail" id="thumbnail"
+                                            value="{{ $course->thumbnail }}">
                                     </div>
-                                    {{-- <div class="">
-                                        <input type="file" name="thumbnail" id="thumbnail">
-                                    </div> --}}
                                 </div>
 
                                 <!-- Visibility -->
-                                <div class="col-md-3 position-relative mb-5 visibility_">
-                                    <div class="border-bottom text-center ">
-                                        <h4 class="text-black">Visibility</h4>
-                                    </div>
-                                    <!-- Custom Radio Color -->
-                                    <div class="form-check form-radio-primary py-2">
-                                        <label class="form-check-label" for="active">
-                                            <input class="form-check-input" type="radio" name="visibility" id="active"
-                                                value="active" {{ $course->visibility == 'active' ? 'checked' : '' }}>
-                                            <label for="active">Active</label>
-                                        </label>
-                                    </div>
+                                <div class="col-md-3
+                                            position-relative mb-5 visibility_">
+                                        <div class="border-bottom text-center ">
+                                            <h4 class="text-black">Visibility</h4>
+                                        </div>
+                                        <!-- Custom Radio Color -->
+                                        <div class="form-check form-radio-primary py-2">
+                                            <label class="form-check-label" for="active">
+                                                <input class="form-check-input" type="radio" name="visibility"
+                                                    id="active" value="active"
+                                                    {{ $course->visibility == 'active' ? 'checked' : '' }}>
+                                                <label for="active">Active</label>
+                                            </label>
+                                        </div>
 
-                                    <!-- Custom Radio Color -->
-                                    <div class="form-check form-radio-primary">
-                                        <label class="form-check-label" for="inactive">
-                                            <input class="form-check-input" type="radio" name="visibility" id="inactive"
-                                                value="inactive" {{ $course->visibility == 'inactive' ? 'checked' : '' }}>
-                                            <label for="inactive">Inactive</label>
-                                        </label>
-                                    </div>
-                                    <div class="mt-2">
-                                        <button class="btn btn-primary w-100" type="submit">Create</button>
-                                    </div>
+                                        <!-- Custom Radio Color -->
+                                        <div class="form-check form-radio-primary">
+                                            <label class="form-check-label" for="inactive">
+                                                <input class="form-check-input" type="radio" name="visibility"
+                                                    id="inactive" value="inactive"
+                                                    {{ $course->visibility == 'inactive' ? 'checked' : '' }}>
+                                                <label for="inactive">Inactive</label>
+                                            </label>
+                                        </div>
+                                        <div class="mt-2">
+                                            <button class="btn btn-primary w-100" type="submit">Create</button>
+                                        </div>
 
-                                    @error('visibility')
-                                        <p class="text-denger">{{ $message }}</p>
-                                    @enderror
+                                        @error('visibility')
+                                            <p class="text-denger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
 
 
@@ -185,27 +184,40 @@
 
 @section('script')
     <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
-            toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
-            toolbar_mode: 'floating',
-            tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name',
-        });
-
         // register the plugins with FilePond
         FilePond.registerPlugin(
             FilePondPluginImagePreview,
             FilePondPluginImageResize,
-            FilePondPluginImageTransform
+            FilePondPluginImageTransform,
+            FilePondPluginFilePoster,
         );
 
         const inputElement = document.querySelector('#thumbnail');
         const pond = FilePond.create(inputElement);
 
         FilePond.setOptions({
-            storeAsFile: true
+            storeAsFile: true,
+            files: [{
+                // the server file reference
+                source: '{{ rand(12, 1232333) }}',
+
+                // set type to local to indicate an already uploaded file
+                options: {
+                    type: 'local',
+
+                    // optional stub file information
+                    file: {
+                        name: '{{ $course->thumbnail }}',
+                        size: {{ \File::size(public_path('storage/uploads/course/'. $course->thumbnail)) }},
+                        type: 'image/png',
+                    },
+
+                    // pass poster property
+                    metadata: {
+                        poster: '{{ getAssetUrl($course->thumbnail, 'storage/uploads/course') }}',
+                    },
+                },
+            }, ],
         });
     </script>
 @endsection

@@ -15,14 +15,13 @@
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/dropzone/dropzone.css" type="text/css" />
     <!-- Filepond css -->
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <link
+    href="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.css"
+    rel="stylesheet">
 
     <!-- Add plugin styles -->
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
         rel="stylesheet">
-
-    <!-- tiny editor Js -->
-    <script src="https://cdn.tiny.cloud/1/y5ceq8cxh6oivxq371ywid0ezemdwg185q879rp22231kpik/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
 
     <!-- Layout config Js -->
     <script src="{{ asset('backend') }}/assets/js/layout.js"></script>
@@ -37,7 +36,11 @@
 
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!-- -->
+    <x-head.tinymce-config/>
     @yield('css')
 
 </head>

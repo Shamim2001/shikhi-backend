@@ -27,8 +27,7 @@
 </button>
 <!--end back-to-top-->
 
-<!-- jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <!-- JAVASCRIPT -->
 <script src="{{ asset('backend') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('backend') }}/assets/libs/simplebar/simplebar.min.js"></script>
@@ -40,6 +39,7 @@
 
 <!-- filepond js -->
 <!-- Add plugin scripts -->
+<script src="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.js"></script>
 <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
 <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
 <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
