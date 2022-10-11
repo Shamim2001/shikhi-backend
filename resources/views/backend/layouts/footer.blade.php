@@ -36,6 +36,11 @@
 <script src="{{ asset('backend') }}/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
 <script src="{{ asset('backend') }}/assets/js/plugins.js"></script>
 
+<!--select2 cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="{{ asset('backend') }}/assets/js/pages/select2.init.js"></script>
+
 
 <!-- filepond js -->
 <!-- Add plugin scripts -->

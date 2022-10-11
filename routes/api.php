@@ -17,7 +17,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post( 'login', [AuthController::class, 'login'] );
 
     Route::get('courses', [ApiController::class, 'courses']);
-    Route::post('courses/enroll', [ApiController::class, 'coursesEnroll']);
+    Route::post('course/{id}', [ApiController::class, 'courseSingle']);
 
     Route::get('lessons', [LessonController::class, 'lessons']);
 

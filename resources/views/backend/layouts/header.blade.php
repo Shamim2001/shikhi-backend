@@ -12,7 +12,10 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('backend') }}/assets/images/favicon.ico">
-    <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/dropzone/dropzone.css" type="text/css" />
+
+    <!-- Select 2 Css -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <!-- Filepond css -->
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
     <link
@@ -576,13 +579,12 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">
                                     <img class="rounded-circle header-profile-user"
-                                        src="{{ asset('backend') }}/assets/images/users/avatar-1.jpg"
+                                        src="{{ Auth::user()->thumbnail }}"
                                         alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Anna
-                                            Adame</span>
+                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->name }}</span>
                                         <span
-                                            class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">Founder</span>
+                                            class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{ Auth::user()->roles[0]->name }}</span>
                                     </span>
                                 </span>
                             </button>

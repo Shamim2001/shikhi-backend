@@ -43,9 +43,9 @@
                         <div class="d-flex justify-content-between gap-4">
                             <div class="flex-1">
                                 <div class="position-relative mb-5">
-                                    <label for="star" class="form-label">Star</label>
-                                    <input type="number" class="form-control" name="star" id="star" value="{{ old('star') }}"
-                                        placeholder="type here" required>
+                                    <label for="star" class="form-label fs-17">Star</label>
+                                    <input type="number" class="form-control" name="star" id="star"
+                                        value="{{ old('star') }}" placeholder="type here" required>
                                     <div class="">
                                         @error('star')
                                             <p class="text-denger">{{ $message }}</p>
@@ -53,10 +53,20 @@
                                     </div>
                                 </div>
 
+                                <!-- Courses -->
+                                    <div class="col-lg-12 mb-5">
+                                        <h5 class="fw-semibold ">Courses</h5>
+                                        <select class="js-example-basic-single" name="state">
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                 <!-- Contents -->
                                 <div class="mb-5 position-relative">
-                                    <label for="content" class="form-label">Content</label>
-                                    <textarea name="content" id="content"></textarea>
+                                    <label for="content" class="form-label fs-17">Content</label>
+                                    <x-tinymce-editor name="content"></x-tinymce-editor>
                                     <div class="mt-2">
                                         @error('content')
                                             <p class="text-denger">{{ $message }}</p>
@@ -65,42 +75,6 @@
                                 </div>
                             </div>
                             <div class="w-25 mt-4">
-                                <div class="card mb-5">
-                                    <div class="card-header text-center">
-                                        <h4 class="card-title mb-0 text-black">Courses</h4>
-                                    </div><!-- end card header -->
-
-                                    <div class="card-body">
-                                        <div class="mx-n3">
-                                            <div data-simplebar data-simplebar-auto-hide="false"
-                                                data-simplebar-track="secondary" style="max-height: 274px;">
-                                                <div class="list-group list-group-flush px-4">
-
-                                                    @foreach ($courses as $course)
-                                                        <div class="form-check py-2">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                name="course_id" id="course_id"
-                                                                value="{{ $course->id }}">
-                                                            <label class="form-check-label" for="course_id">
-                                                                {{ $course->name }}
-                                                            </label>
-                                                        </div>
-                                                    @endforeach
-
-                                                    <div class="mt-3 text-center">
-                                                        <a href="#">Add New Course</a>
-                                                    </div>
-                                                    <div class="mt-2">
-                                                        @error('course_id')
-                                                            <p class="text-denger">{{ $message }}</p>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card-body -->
-                                </div><!-- end card -->
-
                                 <!-- Visibility -->
                                 <div class="col-md-3 position-relative mb-4 visibility_">
                                     <div class="mt-2">

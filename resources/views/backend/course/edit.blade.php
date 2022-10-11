@@ -136,45 +136,40 @@
                                 </div>
 
                                 <!-- Visibility -->
-                                <div class="col-md-3
+                                <div
+                                    class="col-md-3
                                             position-relative mb-5 visibility_">
-                                        <div class="border-bottom text-center ">
-                                            <h4 class="text-black">Visibility</h4>
-                                        </div>
-                                        <!-- Custom Radio Color -->
-                                        <div class="form-check form-radio-primary py-2">
-                                            <label class="form-check-label" for="active">
-                                                <input class="form-check-input" type="radio" name="visibility"
-                                                    id="active" value="active"
-                                                    {{ $course->visibility == 'active' ? 'checked' : '' }}>
-                                                <label for="active">Active</label>
-                                            </label>
-                                        </div>
-
-                                        <!-- Custom Radio Color -->
-                                        <div class="form-check form-radio-primary">
-                                            <label class="form-check-label" for="inactive">
-                                                <input class="form-check-input" type="radio" name="visibility"
-                                                    id="inactive" value="inactive"
-                                                    {{ $course->visibility == 'inactive' ? 'checked' : '' }}>
-                                                <label for="inactive">Inactive</label>
-                                            </label>
-                                        </div>
-                                        <div class="mt-2">
-                                            <button class="btn btn-primary w-100" type="submit">Create</button>
-                                        </div>
-
-                                        @error('visibility')
-                                            <p class="text-denger">{{ $message }}</p>
-                                        @enderror
+                                    <div class="border-bottom text-center ">
+                                        <h4 class="text-black">Visibility</h4>
                                     </div>
+                                    <!-- Custom Radio Color -->
+                                    <div class="form-check form-radio-primary py-2">
+                                        <label class="form-check-label" for="active">
+                                            <input class="form-check-input" type="radio" name="visibility" id="active"
+                                                value="active" {{ $course->visibility == 'active' ? 'checked' : '' }}>
+                                            <label for="active">Active</label>
+                                        </label>
+                                    </div>
+
+                                    <!-- Custom Radio Color -->
+                                    <div class="form-check form-radio-primary">
+                                        <label class="form-check-label" for="inactive">
+                                            <input class="form-check-input" type="radio" name="visibility" id="inactive"
+                                                value="inactive" {{ $course->visibility == 'inactive' ? 'checked' : '' }}>
+                                            <label for="inactive">Inactive</label>
+                                        </label>
+                                    </div>
+                                    <div class="mt-2">
+                                        <button class="btn btn-primary w-100" type="submit">Create</button>
+                                    </div>
+
+                                    @error('visibility')
+                                        <p class="text-denger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
+                        </div>
                     </form>
-
-
-
-
                 </div>
             </div>
         </div>
@@ -208,7 +203,7 @@
                     // optional stub file information
                     file: {
                         name: '{{ $course->thumbnail }}',
-                        size: {{ \File::size(public_path('storage/uploads/course/'. $course->thumbnail)) }},
+                        size: {{ \File::size(public_path('storage/uploads/course/' . $course->thumbnail)) }},
                         type: 'image/png',
                     },
 
