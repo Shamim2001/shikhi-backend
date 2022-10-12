@@ -16,12 +16,12 @@ class LessonFactory extends Factory {
      * @return array<string, mixed>
      */
     public function definition() {
-        $name = $this->faker->name();
+        $name = fake()->sentence(rand(2, 5));
         $type = ['public', 'private'];
         return [
             'name'         => $name,
             'slug'         => Str::slug( $name ),
-            'content'      => $this->faker->sentence( rand( 5, 10 ) ),
+            'content'      => fake()->paragraphs( rand( 1, 3), true ),
             'visibility'   => $type[rand( 0, 1 )],
             'course_id'    => Course::all()->random()->id,
         ];

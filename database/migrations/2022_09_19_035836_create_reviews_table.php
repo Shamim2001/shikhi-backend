@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('star');
-            $table->string('content', 255);
+            $table->float('star', 5);
+            $table->mediumText('content', 255);
             $table->foreignId('student_id');
             $table->foreignId('course_id');
             $table->timestamps();

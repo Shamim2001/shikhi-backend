@@ -3,21 +3,21 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="index-2.html" class="logo logo-dark">
+        <a href="{{ route('dashboard.index') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ asset('backend') }}/assets/images/logo-sm.png" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <h1 class="text-white p-3">Shikhi</h1>
+                <img src="{{ asset('backend') }}/assets/images/shikhi.png" alt=""  height="70">
             </span>
         </a>
         <!-- Light Logo-->
-        <a href="index-2.html" class="logo logo-light">
+        <a href="{{ route('dashboard.index') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{ asset('backend') }}/assets/images/logo-sm.png" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <h1 class="text-white p-3">Shikhi</h1>
+                <img src="{{ asset('backend') }}/assets/images/shikhi.png" alt="" height="70">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -90,6 +90,12 @@
                         <i class="las la-book-reader"></i> <span data-key="t-lessons">Lessons</span>
                     </a>
                 </li> <!-- end Lesson -->
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('review.*') ? 'active' : ''}}" href="{{ route('review.index') }}" >
+                        <i class="las la-star "></i> <span data-key="t-lessons">Reviews</span>
+                    </a>
+                </li> <!-- end review -->
             </ul>
         </div>
         <!-- Sidebar -->

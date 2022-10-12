@@ -4,10 +4,14 @@ use App\Http\Controllers\backend\CategotyController;
 use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\LessonController;
+use App\Http\Controllers\backend\ReviewController;
 use App\Http\Controllers\backend\TagControllers;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\UserManagementController;
+<<<<<<< HEAD
 use App\Models\Category;
+=======
+>>>>>>> develop
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,6 +29,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::resource('tag', TagControllers::class);
     Route::resource('user', UserController::class);
     Route::resource('lesson', LessonController::class);
+    Route::resource('review', ReviewController::class);
 });
 
 require __DIR__.'/auth.php';

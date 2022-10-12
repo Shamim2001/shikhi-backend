@@ -38,21 +38,23 @@
                                 <th scope="col" class="text-center">#</th>
                                 <th scope="col" class="text-center">Name</th>
                                 <th scope="col" class="text-center">Content</th>
-                                <th scope="col" class="text-center">lesson_id</th>
+                                <th scope="col" class="text-center">Course Name</th>
                                 <th scope="col" class="text-center">Visibility</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($lessons as $key=>$lesson)
+                            @forelse ($lessons as $key => $lesson)
                                 <tr>
-                                    <td >{{ $key+1 }}</td>
-                                    <td><a href="{{ route('lesson.show', $lesson) }}">{{ $lesson->name }}</a></td>
-                                    <td style="width: 25%">{{ $lesson->content }}</td>
-                                    <td>{{ $lesson->course_id }}</td>
-                                    <td>{{ $lesson->visibility }}</td>
-                                    <td>
-                                        <div class="hstack gap-3 fs-15 justify-content-center">
+                                    <td >{{ ++$key }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('lesson.show', $lesson) }}">{{ $lesson->name }}</a>
+                                    </td>
+                                    <td class="text-center" style="width: 40%">{{ $lesson->content }}</td>
+                                    <td class="text-center">{{ optional($lesson->course)->name }}</td>
+                                    <td class="text-center">{{ $lesson->visibility }}</td>
+                                    <td class="text-center">
+                                        <div class="hstack gap-3 fs-19 justify-content-center">
                                             <a href="{{ route('lesson.edit', $lesson) }}" class="link-primary fs-18"><i
                                                     class="ri-edit-fill "></i></a>
                                             <a href="javascript:void(0);" class="link-success fs-18"><i
@@ -62,7 +64,7 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" class="link-danger fs-18"><i
+                                                <button style="border: none;" type="submit" class="link-danger"><i
                                                         class="ri-delete-bin-5-line"></i></button>
                                             </form>
                                         </div>

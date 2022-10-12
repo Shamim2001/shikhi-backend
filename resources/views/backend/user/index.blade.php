@@ -14,8 +14,8 @@
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                                <li class="breadcrumb-item active">user</li>
+                                <li class="breadcrumb-item"><a href="{{ route('user.index') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item active">index</li>
                             </ol>
                         </div>
 
@@ -47,14 +47,16 @@
                             @forelse ($users as $user)
                                 <tr>
                                     <td >
-                                        <img src="{{ $user->thumbnail }}" style="width: 70px"  alt="{{ $user->thumbnail }}">
+                                        <img src="{{ getAssetUrl($user->thumbnail, 'uploads/course') }}"
+                                    class="avatar-xs rounded-circle" alt="{{ $user->thumbnai }}">
+
                                     </td>
                                     <td><a href="{{ route('user.show', $user) }}">{{ $user->name }}</a></td>
                                     <td class="text-center">{{ Str::lower($user->username) }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>
-                                        <div class="hstack gap-3 fs-15 justify-content-center">
+                                        <div class="hstack gap-3 fs-19 justify-content-center">
                                             <a href="{{ route('user.edit', $user) }}" class="link-primary fs-18"><i
                                                     class="ri-edit-fill "></i></a>
                                             <a href="javascript:void(0);" class="link-success fs-18"><i
@@ -64,7 +66,7 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" class="link-danger fs-18"><i
+                                                <button style="border: none;" type="submit" class="link-danger fs-18"><i
                                                         class="ri-delete-bin-5-line"></i></button>
                                             </form>
                                         </div>

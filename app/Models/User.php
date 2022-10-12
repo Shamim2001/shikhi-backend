@@ -6,13 +6,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+<<<<<<< HEAD
 use Laravel\Sanctum\HasApiTokens;
+=======
+use Laravel\Passport\HasApiTokens;
+>>>>>>> develop
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
@@ -28,13 +35,13 @@ class User extends Authenticatable
 
 
     // Accessor
-    public function getThumbnailAttribute( $name ) {
-        if ( str_starts_with( $name, 'http' ) ) {
-            return $name;
-        } else {
-            return asset( 'storage/uploads/courses/' . $name );
-        }
-    }
+    // public function getThumbnailAttribute( $name ) {
+    //     if ( str_starts_with( $name, 'http' ) ) {
+    //         return $name;
+    //     } else {
+    //         return asset( 'storage/uploads/course/' . $name );
+    //     }
+    // }
 
     /**
      * The attributes that should be cast.

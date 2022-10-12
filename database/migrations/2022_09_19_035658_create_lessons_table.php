@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
-            $table->string('slug', 255)->unique();
-            $table->string('content', 255);
+            $table->string('name', 125);
+            $table->string('slug', 125)->unique();
+            $table->mediumText('content');
             $table->enum('visibility', ['private', 'public'])->default('public');
             $table->foreignId('course_id');
             $table->timestamps();

@@ -16,7 +16,7 @@ class TagFactory extends Factory {
      * @return array<string, mixed>
      */
     public function definition() {
-        $name = $this->faker->words( 1, true );
+        $name = fake()->name();
         return [
             'name'      => $name,
             'slug'      => Str::slug( $name ),

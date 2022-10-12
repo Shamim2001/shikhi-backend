@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,7 @@ class LessonController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view( 'backend.lesson.create' );
+        return view( 'backend.lesson.create' )->with('courses', Course::get());
     }
 
     /**
@@ -40,6 +41,7 @@ class LessonController extends Controller {
             'name'       => 'required|max:255',
             'content'    => 'required',
             'visibility' => 'required|not_in:none',
+            'course_id'  => 'required'
         ] );
 
         Lesson::create( [
@@ -71,7 +73,8 @@ class LessonController extends Controller {
      */
     public function edit( Lesson $lesson ) {
         return view( 'backend.lesson.edit' )->with( [
-            'lesson' => $lesson,
+            'lesson'  => $lesson,
+            'courses' => Course::get()
         ] );
     }
 
@@ -86,6 +89,7 @@ class LessonController extends Controller {
         $request->validate( [
             'name'       => 'required|max:255',
             'content'    => 'required',
+            'course_id'  => 'required',
             'visibility' => 'required|not_in:none',
         ] );
 
@@ -94,10 +98,10 @@ class LessonController extends Controller {
             'slug'       => Str::slug( $request->name ),
             'content'    => $request->content,
             'visibility' => $request->visibility,
-            'course_id'  => Auth::id(),
+            'course_id'  => $request->course_id,
         ] );
 
-        return redirect()->route( 'lesson.index' )->with( 'success', 'Lesson Updated Succeffull' );
+        return redirect()->route( 'lesson.index' )->with( 'success', 'Lesson Updated Successfull' );
     }
 
     /**
@@ -109,6 +113,6 @@ class LessonController extends Controller {
     public function destroy( Lesson $lesson ) {
         $lesson->delete();
 
-        return redirect()->route('lesson.index')->with( 'success', 'Lesson Deleted Successfull' );
+        return redirect()->route('lesson.index')->with( 'success', 'Lesson has been Deleted!' );
     }
 }

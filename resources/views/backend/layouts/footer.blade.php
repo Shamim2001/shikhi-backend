@@ -27,6 +27,7 @@
 </button>
 <!--end back-to-top-->
 
+
 <!-- JAVASCRIPT -->
 <script src="{{ asset('backend') }}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('backend') }}/assets/libs/simplebar/simplebar.min.js"></script>
@@ -35,6 +36,7 @@
 <script src="{{ asset('backend') }}/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
 <script src="{{ asset('backend') }}/assets/js/plugins.js"></script>
 
+<<<<<<< HEAD
 {{-- @if ( request()->routeIs('*create*') ) --}}
     <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js">
@@ -64,9 +66,68 @@
         });
     </script>
 {{-- @endif --}}
+=======
+<!--select2 cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="{{ asset('backend') }}/assets/js/pages/select2.init.js"></script>
+
+
+<!-- filepond js -->
+<!-- Add plugin scripts -->
+<script src="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+>>>>>>> develop
 
 <!-- App js -->
 <script src="{{ asset('backend') }}/assets/js/app.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+            toastr.options.timeOut = 9500;
+            @if (Session::has('success'))
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "timeOut": 2000
+                }
+                toastr.success("{{ Session::get('success') }}");
+            @endif
+
+            @if (Session::has('error'))
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "timeOut": 2000
+                }
+                toastr.error("{{ Session::get('error') }}");
+            @endif
+
+            @if (Session::has('info'))
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "timeOut": 2000
+                }
+                toastr.info("{{ Session::get('info') }}");
+            @endif
+
+            @if (Session::has('warning'))
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "timeOut": 2000
+                }
+                toastr.warning("{{ Session::get('warning') }}");
+            @endif
+        });
+</script>
 @yield('script')
 </body>
 

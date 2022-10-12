@@ -93,17 +93,23 @@
                         </div>
                         <!-- image upload-->
                         <div class=" col-md-6 position-relative mb-3">
-                            <label for="thumbnail" class="form-label">Thumbnail</label>
+                            <label for="thumbnail" class="form-label" style="font-size: 1rem">Thumbnail</label>
                             <div class="">
                                  <input class="filepond" type="file" name="thumbnail">
                             </div>
+<<<<<<< HEAD
                             <div class="">
                                 @error('thumbnail')
+=======
+
+                            <div class="mt-2">
+                                @error('phone')
+>>>>>>> develop
                                     <p class="text-denger">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
-                        <div class="mt-2text-end">
+                        <div class="mt-2 text-end my-2">
                             <button class="btn btn-primary" type="submit">Create</button>
                         </div>
                     </form>
@@ -123,6 +129,20 @@
             toolbar_mode: 'floating',
             tinycomments_mode: 'embedded',
             tinycomments_author: 'Author name',
+        });
+
+        // register the plugins with FilePond
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview,
+            FilePondPluginImageResize,
+            FilePondPluginImageTransform
+        );
+
+        const inputElement = document.querySelector('#thumbnail');
+        const pond = FilePond.create(inputElement);
+
+        FilePond.setOptions({
+            storeAsFile: true
         });
     </script>
 @endsection

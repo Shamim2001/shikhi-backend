@@ -15,9 +15,8 @@ class Course extends Model
     // User Relation one to ne Relationship
     public function teacher()
     {
-        return $this->belongsTo(User::class, 'teacher_id', 'id');
+        return $this->belongsTo(User::class);
     }
-
 
     // Category one to one Relationship
     public function category()
@@ -25,14 +24,15 @@ class Course extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+    public function lesson()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 
-    // Accessor
-    public function getThumbnailAttribute( $name ) {
-        if ( str_starts_with( $name, 'http' ) ) {
-            return $name;
-        } else {
-            return asset( 'storage/uploads/courses/' . $name );
-        }
+    // Review one to many relationship
+    public function review()
+    {
+        return $this->hasMany(Review::class);
     }
 
 

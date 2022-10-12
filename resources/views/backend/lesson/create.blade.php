@@ -22,10 +22,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Courses</h4>
+                        <h4 class="mb-sm-0">Lesson Create</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('lesson.index') }}">Lessons</a></li>
                                 <li class="breadcrumb-item active">Create</li>
                             </ol>
                         </div>
@@ -43,9 +43,9 @@
                         <div class="d-flex justify-content-between gap-4">
                             <div class="flex-1">
                                 <div class="position-relative mb-5">
-                                    <label for="name" class="form-label">Name</label>
+                                    <label for="name" class="form-label fs-17">Name</label>
                                     <input type="text" class="form-control" name="name" id="name"
-                                        placeholder="type course name" required>
+                                        value="{{ old('name') }}" placeholder="type here" required>
                                     <div class="">
                                         @error('name')
                                             <p class="text-denger">{{ $message }}</p>
@@ -53,12 +53,20 @@
                                     </div>
                                 </div>
 
-                                <!-- requirements -->
-                                <div class="position-relative mb-4 ">
-                                    <label for="content" class="form-label">Content</label>
-                                    <input type="text" class="form-control py-5" name="content" id="content"
-                                        placeholder="type here" required>
-                                    <div class="">
+                                <div class="col-lg-12 mb-5">
+                                    <h5 class="fw-semibold ">Courses</h5>
+                                    <select class="js-example-basic-single p-3" name="state">
+                                        @foreach ($courses as $course)
+                                            <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <!-- Contents -->
+                                <div class="mb-5 position-relative">
+                                    <label for="content" class="form-label fs-17">Content</label>
+                                    <x-tinymce-editor name="content"></x-tinymce-editor>
+                                    <div class="mt-2">
                                         @error('content')
                                             <p class="text-denger">{{ $message }}</p>
                                         @enderror
@@ -66,7 +74,6 @@
                                 </div>
                             </div>
                             <div class="w-25 mt-4">
-
                                 <!-- Visibility -->
                                 <div class="col-md-3 position-relative mb-4 visibility_">
                                     <div class="border-bottom text-center ">

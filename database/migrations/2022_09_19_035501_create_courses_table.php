@@ -15,16 +15,22 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
-            $table->string('slug', 255);
-            $table->string('description', 255)->nullable();
-            $table->string('thumbnail', 255)->nullable();
+            $table->string('name', 125);
+            $table->string('slug', 125)->unique();
+            $table->longText('description')->nullable();
+            $table->string('thumbnail', 125)->nullable();
             $table->longText('requirements');
-            $table->string('audience', 255);
-            $table->enum('visibility', ['public', 'private'])->default('public');
+            $table->longText('audience');
+            $table->enum('visibility', ['active', 'inactive'])->default('active');
             $table->foreignId('category_id');
             $table->foreignId('teacher_id');
             $table->timestamps();
+        });
+
+
+        Schema::create('courses_users', function (Blueprint $table) {
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('student_id');
         });
     }
 
