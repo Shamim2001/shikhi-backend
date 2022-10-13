@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Role::create( ['name' => 'SuperAdmin'] );
-        // Role::create( ['name' => 'student'] );
-        // Role::create( ['name' => 'teacher'] );
+        Role::create( ['name' => 'SuperAdmin'] );
+        Role::create( ['name' => 'student'] );
+        Role::create( ['name' => 'teacher'] );
 
         User::factory()->create([
             'name' => 'Shamim Ahmed',
