@@ -21,10 +21,10 @@ class ApiController extends Controller
     // Single Course view
     public function courseSingle($id)
     {
-        $lesson = Lesson::where('course_id', $id)->get();
+       $course = Course::findOrFail($id);
         return [
             'error' => false,
-            'lesson' => $lesson,
+            'lesson' => $course,
         ];
     }
 }

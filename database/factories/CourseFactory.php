@@ -28,7 +28,7 @@ class CourseFactory extends Factory {
             'visibility'   => $type[rand( 0, 1 )],
             'category_id'  => Category::all()->random()->id,
             'teacher_id'   => 1,
-            'thumbnail'    => 'https://source.unsplash.com/random/400x250?bool,library&'.rand(2,242343),
+            'thumbnail'    => 'https://source.unsplash.com/random/400x250?bool,library&'.rand(2,2423),
         ];
     }
 }

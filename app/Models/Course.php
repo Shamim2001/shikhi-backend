@@ -10,12 +10,13 @@ class Course extends Model
     use HasFactory;
      protected $table = 'courses';
     protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $with = ['teacher', 'lessons'];
 
 
     // User Relation one to ne Relationship
     public function teacher()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'teacher_id', 'id');
     }
 
     // Category one to one Relationship
@@ -24,13 +25,13 @@ class Course extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function lesson()
+    public function lessons()
     {
-        return $this->hasMany(Lesson::class);
+        return $this->hasMany(Lesson::class, 'course_id', 'id');
     }
 
     // Review one to many relationship
-    public function review()
+    public function reviews()
     {
         return $this->hasMany(Review::class);
     }
