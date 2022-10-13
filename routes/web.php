@@ -8,10 +8,6 @@ use App\Http\Controllers\backend\ReviewController;
 use App\Http\Controllers\backend\TagControllers;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\UserManagementController;
-<<<<<<< HEAD
-use App\Models\Category;
-=======
->>>>>>> develop
 use Illuminate\Support\Facades\Route;
 
 
