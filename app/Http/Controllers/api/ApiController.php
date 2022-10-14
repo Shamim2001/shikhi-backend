@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +26,8 @@ class ApiController extends Controller
        $course = Course::findOrFail($id);
         return [
             'error' => false,
-            'lesson' => $course,
+            'course' => $course,
         ];
     }
+
 }

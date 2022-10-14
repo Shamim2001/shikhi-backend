@@ -14,7 +14,7 @@ class Review extends Model
     // student one to many relationship
     public function student()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'student_id', 'id');
     }
 
     // course one to many relationship

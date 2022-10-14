@@ -14,6 +14,13 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $with = ['courses'];
+
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'courses_users', 'course_id', 'student_id', 'id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -26,14 +33,6 @@ class User extends Authenticatable
     ];
 
 
-    // Accessor
-    // public function getThumbnailAttribute( $name ) {
-    //     if ( str_starts_with( $name, 'http' ) ) {
-    //         return $name;
-    //     } else {
-    //         return asset( 'storage/uploads/course/' . $name );
-    //     }
-    // }
 
     /**
      * The attributes that should be cast.

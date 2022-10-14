@@ -10,7 +10,7 @@ class Course extends Model
     use HasFactory;
      protected $table = 'courses';
     protected $guarded = ['id', 'created_at', 'updated_at'];
-    protected $with = ['teacher', 'lessons'];
+    protected $with = ['teacher', 'lessons', 'category', 'reviews', 'student'];
 
 
     // User Relation one to ne Relationship
@@ -33,9 +33,14 @@ class Course extends Model
     // Review one to many relationship
     public function reviews()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class, 'course_id', 'id');
     }
 
+    // many to many Relation student_id
+    public function student()
+    {
+        return $this->belongsToMany(User::class, 'courses_users', 'course_id', 'student_id');
+    }
 
     // Change default Route name
     public function getRouteKeyName()

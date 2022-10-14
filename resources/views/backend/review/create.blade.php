@@ -54,14 +54,14 @@
                                 </div>
 
                                 <!-- Courses -->
-                                    <div class="col-lg-12 mb-5">
-                                        <h5 class="fw-semibold ">Courses</h5>
-                                        <select class="js-example-basic-single" name="state">
-                                            @foreach ($courses as $course)
-                                                <option value="{{ $course->id }}">{{ $course->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                <div class="col-lg-12 position-relative mb-5">
+                                    <h5 class="fw-semibold ">Courses</h5>
+                                    <select class="js-example-basic-single p-3" name="state">
+                                        @foreach ($courses as $course)
+                                            <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
                                 <!-- Contents -->
                                 <div class="mb-5 position-relative">
