@@ -26,7 +26,7 @@ class ApiController extends Controller
        $course = Course::findOrFail($id);
         return [
             'error' => false,
-            'course' => $course,
+            'courses' => $course,
         ];
     }
 

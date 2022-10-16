@@ -58,11 +58,11 @@
                                         <button type="button"
                                             class="btn btn-primary position-relative p-0 avatar-xs rounded">
                                             <span class="avatar-title bg-transparent">
-                                               32
+                                               {{ count($course->lessons) }}
                                             </span>
                                             <span
                                                 class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1"><span
-                                                    class="visually-hidden">unread messages</span></span>
+                                                    class="visually-hidden">unread lessons</span></span>
                                         </button>
                                     </td>
                                     <td class="text-center">{{ $course->visibility }}</td>

@@ -21,7 +21,10 @@ class AuthController extends Controller {
                 ];
             }
 
-            $token = auth()->user()->createToken( 'authToken' )->accessToken;
+            // @var User $user
+            $user = Auth()->user();
+
+            $token = $user->createToken( 'authToken' )->accessToken;
 
             return [
                 'error'   => false,
