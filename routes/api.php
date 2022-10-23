@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 // Public routes
 Route::post( 'login', [AuthController::class, 'login'] );
 Route::get( 'courses', [ApiController::class, 'courses'] );
-Route::get( 'course/{id}', [ApiController::class, 'courseSingle'] );
+Route::get( 'course/{slug}', [ApiController::class, 'courseSingle'] );
 Route::get( 'category/{id}', [ApiController::class, 'category'] );
 
 Route::get('review', [ApiController::class, 'review']);

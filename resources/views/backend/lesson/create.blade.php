@@ -57,7 +57,7 @@
                                     <h5 class="fw-semibold ">Courses</h5>
                                     <select class="js-example-basic-single" name="course_id">
                                         @foreach ($courses as $course)
-                                            <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                            <option value="{{ $course->id }}" {{ request('course_id') == $course->id ? 'selected' : '' }}>{{ $course->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

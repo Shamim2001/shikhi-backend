@@ -21,7 +21,7 @@ class AuthController extends Controller {
                 ];
             }
 
-            // @var User $user
+            /** @var User $user */
             $user = Auth()->user();
 
             $token = $user->createToken( 'authToken' )->accessToken;

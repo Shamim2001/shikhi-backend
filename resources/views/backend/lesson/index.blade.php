@@ -50,15 +50,13 @@
                                     <td class="text-center">
                                         <a href="{{ route('lesson.show', $lesson) }}">{{ $lesson->name }}</a>
                                     </td>
-                                    <td class="text-center" style="width: 40%">{{ $lesson->content }}</td>
+                                    <td class="text-center" style="width: 40%">{!! $lesson->content !!}</td>
                                     <td class="text-center">{{ optional($lesson->course)->name }}</td>
                                     <td class="text-center">{{ $lesson->visibility }}</td>
                                     <td class="text-center">
                                         <div class="hstack gap-3 fs-19 justify-content-center">
                                             <a href="{{ route('lesson.edit', $lesson) }}" class="link-primary fs-18"><i
                                                     class="ri-edit-fill "></i></a>
-                                            <a href="javascript:void(0);" class="link-success fs-18"><i
-                                                    class="ri-eye-line "></i></a>
                                             <form action="{{ route('lesson.destroy', $lesson) }}" method="post"
                                                 onsubmit="return confirm('Do you really want to delete?');">
                                                 @csrf
@@ -71,6 +69,7 @@
                                     </td>
                                 </tr>
                             @empty
+                                <td colspan="6" class="text-center text-danger fw-semibold fs-6">Lessons Not Found!</td>
                             @endforelse
                         </tbody>
                     </table>

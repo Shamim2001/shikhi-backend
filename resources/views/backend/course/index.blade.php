@@ -49,16 +49,17 @@
                                     <td>{{ ++$key }}</td>
                                     <td class="text-center">
                                         <img src="{{ getAssetUrl($course->thumbnail, 'storage/uploads/course') }}"
-                                    class="avatar-xs rounded-circle" alt="{{ $course->name }}">
+                                            class="avatar-xs rounded-circle" alt="{{ $course->name }}">
 
                                     </td>
                                     <td class="text-center"><a
                                             href="{{ route('course.show', $course) }}">{{ $course->name }}</a></td>
                                     <td class="text-center">
+
                                         <button type="button"
                                             class="btn btn-primary position-relative p-0 avatar-xs rounded">
                                             <span class="avatar-title bg-transparent">
-                                               {{ count($course->lessons) }}
+                                                {{ count($course->lessons) }}
                                             </span>
                                             <span
                                                 class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1"><span
@@ -70,20 +71,21 @@
                                         <div class="hstack gap-3 fs-19 justify-content-center">
                                             <a href="{{ route('course.edit', $course) }}" class="link-primary fs-18"><i
                                                     class="ri-edit-fill "></i></a>
-                                            <a href="javascript:void(0);" class="link-success fs-18"><i
+                                            <a href="{{ route('course.show', $course) }}" class="link-success fs-18"><i
                                                     class="ri-eye-line "></i></a>
                                             <form action="{{ route('course.destroy', $course) }}" method="post"
                                                 onsubmit="return confirm('Do you really want to delete?');">
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button style="border: none;" type="submit" class="link-danger" ><i
+                                                <button style="border: none;" type="submit" class="link-danger"><i
                                                         class="ri-delete-bin-5-line"></i></button>
                                             </form>
                                         </div>
                                     </td>
                                 </tr>
                             @empty
+                                <td colspan="6" class="text-center text-danger fw-semibold fs-6">Courses Not Found!</td>
                             @endforelse
                         </tbody>
                     </table>

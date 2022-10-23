@@ -27,7 +27,9 @@ class LessonController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view( 'backend.lesson.create' )->with('courses', Course::get());
+        return view( 'backend.lesson.create' )->with([
+            'courses'  => Course::orderBy('name', 'ASC')->get(),
+        ]);
     }
 
     /**
@@ -49,7 +51,7 @@ class LessonController extends Controller {
             'slug'       => Str::slug( $request->name ),
             'content'    => $request->content,
             'visibility' => $request->visibility,
-            'course_id'  => Auth::id(),
+            'course_id'  => $request->course_id,
         ] );
 
         return redirect()->route( 'lesson.index' )->with( 'success', 'Lesson Created Succeffull' );
@@ -61,7 +63,7 @@ class LessonController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( $id ) {
+    public function show(  ) {
         //
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Lesson;
 use Brian2694\Toastr\Facades\Toastr;
 use Brian2694\Toastr\Toastr as ToastrToastr;
 use Illuminate\Http\Request;
@@ -82,8 +83,12 @@ class CourseController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( $id ) {
-        //
+    public function show( Course $course ) {
+        return view('backend.course.view')->with([
+            'course' => $course,
+            'categories' => Category::orderBy( 'name', 'ASC' )->get(),
+            'lesson' => Lesson::where('course_id', $course->id)->latest()->get()
+        ]);
     }
 
     /**
