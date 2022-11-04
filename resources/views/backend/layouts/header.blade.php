@@ -579,8 +579,11 @@
                             <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="rounded-circle header-profile-user"
-                                        src="{{ Auth::user()->thumbnail ? Auth::user()->thumbnail : '' }}"
+                                        src="{{ auth()->user()->thumbnail 
+                                            ? asset('storage/uploads/courses/'.auth()->user()->thumbnail)
+                                            : asset('backend/assets/images/users/user-avatar.png') }}"
                                         alt="Header Avatar">
+                                       
                                 <span class="text-start ms-xl-2">
                                      <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->username ? Auth::user()->username : Auth::user()->name }}</span>
                                      <span
