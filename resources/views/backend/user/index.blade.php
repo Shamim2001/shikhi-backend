@@ -33,7 +33,7 @@
                             @forelse ($users as $user)
                                 <tr>
                                     <td >
-                                        <img src="{{ getAssetUrl($user->thumbnail, 'storage/uploads/course') }}"
+                                        <img src="{{ getAssetUrl($user->thumbnail, 'storage/uploads/courses') }}"
                                     class="avatar-xs rounded-circle" alt="{{ $user->thumbnai }}">
 
                                     </td>

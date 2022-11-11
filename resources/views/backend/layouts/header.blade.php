@@ -58,7 +58,7 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
 
-        <header id="page-topbar">
+    <header id="page-topbar">
             <div class="layout-width">
                 <div class="navbar-header">
                     <div class="d-flex">
@@ -236,17 +236,13 @@
                             </div>
                         </div>
 
-
-
-
-
-
                         <div class="ms-1 header-item d-none d-sm-flex">
                             <button type="button"
                                 class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode shadow-none">
                                 <i class='bx bx-moon fs-22'></i>
                             </button>
                         </div>
+
 
                         <div class="dropdown topbar-head-dropdown ms-1 header-item">
                             <button type="button"
@@ -584,16 +580,17 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">
                                     <img class="rounded-circle header-profile-user"
-                                        src="{{ auth()->user()->thumbnail ? asset('storage/uploads/course/' . auth()->user()->thumbnail) : asset('backend/assets/images/users/user-dummy-img.png') }}"
+                                        src="{{ Auth::user()->thumbnail }}"
                                         alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
+                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->name }}</span>
                                         <span
-                                            class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->name }}</span>
-                                        <span
-                                            class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{ Auth::user()->roles->pluck('name')[0] ?? '' }}</span>
+                                            class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{ Auth::user()->roles[0]->name }}</span>
                                     </span>
                                 </span>
                             </button>
+
+
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
                                 <h6 class="dropdown-header">Welcome Anna!</h6>
@@ -617,15 +614,13 @@
                                 <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
                                         class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Lock screen</span></a>
-
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item"><i
-                                            class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                            class="align-middle" data-key="t-logout">Logout</span></button>
-                                </form>
+                                <a class="dropdown-item" href="auth-logout-basic.html"><i
+                                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                        class="align-middle" data-key="t-logout">Logout</span></a>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
