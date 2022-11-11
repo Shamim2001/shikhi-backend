@@ -47,7 +47,8 @@ class UserController extends Controller {
             $thumb = time() . '-' . $request->file( 'thumbnail' )->getClientOriginalName();
             $thumb = str_replace( ' ', '-', $thumb );
 
-            $request->file( 'thumbnail' )->storeAs( 'public/uploads/course', $thumb );
+            $request->file( 'thumbnail' )->storeAs( 'storage/uploads/course', $thumb );
+
         }
 
         User::create( [
@@ -103,10 +104,11 @@ class UserController extends Controller {
         $thumb = $user->thumbnail;
         // update new thumbnail
         if ( !empty( $request->file( 'thumbnail' ) ) ) {
-            Storage::delete( 'public/uploads/courses' . $thumb ); // delete the old image
+            Storage::delete( 'public/uploads/course' . $thumb );
             $filename = strtolower( str_replace( ' ', '-', $request->file( 'thumbnail' )->getClientOriginalName() ) );
             $thumb = time() . '-' . $filename;
-            $request->file( 'thumbnail' )->storeAs( 'public/uploads/courses', $thumb );
+            $request->file( 'thumbnail' )->storeAs( 'public/uploads/course', $thumb );
+            // dd( $request->file( 'thumbnail' ) );
         }
 
         $user->update( [

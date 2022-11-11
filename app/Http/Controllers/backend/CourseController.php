@@ -127,7 +127,7 @@ class CourseController extends Controller {
         $thumb = $course->thumbnail;
         // update new thumbnail
         if ( !empty( $request->file( 'thumbnail' ) ) ) {
-            Storage::delete( 'public/uploads/courses' . $thumb ); // delete the old image
+            Storage::delete( 'public/uploads/course' . $thumb ); // delete the old image
             $filename = strtolower( str_replace( ' ', '-', $request->file( 'thumbnail' )->getClientOriginalName() ) );
             $thumb = time() . '-' . $filename;
             $request->file( 'thumbnail' )->storeAs( 'public/uploads/course', $thumb );

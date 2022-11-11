@@ -19,7 +19,7 @@
         <div class="container-fluid">
 
             <!-- start page title -->
-            <x-page-title page="Edit Course" text="Course"  :route="route('course.index')" index="index" />
+            <x-page-title page="Edit Course" text="Course" :route="route('course.index')" index="index" />
             <!-- end page title -->
 
             <div class="row">
@@ -82,80 +82,70 @@
                                         <h4 class="card-title mb-0 text-black">Category</h4>
                                     </div><!-- end card header -->
 
-                                    <div class="card-body">
-                                        <div class="mx-n3">
-                                            <div data-simplebar data-simplebar-auto-hide="false"
-                                                data-simplebar-track="secondary" style="max-height: 274px;">
-                                                <div class="list-group list-group-flush px-4">
-                                                    @foreach ($categories as $category)
-                                                        <div class="form-check py-2">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                name="category_id" id="category_id"
-                                                                value="{{ $category->id }}"
-                                                                {{ $course->category->id == $category->id ? 'checked' : '' }}>
-                                                            <label class="form-check-label" for="category_id">
-                                                                {{ $category->name }}
-                                                            </label>
-                                                        </div>
-                                                    @endforeach
-
-                                                    <div class="mt-3 text-center">
-                                                        <a href="#">Add New Category</a>
-                                                    </div>
-                                                    <div class="mt-2">
-                                                        @error('category_id')
-                                                            <p class="text-denger">{{ $message }}</p>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div class="px-3 py-4">
+                                        <select class="w-100 p-2" name="category_id">
+                                            <option value="none">Select here</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}"
+                                                    {{ $course->category->id == $category->id ? 'checked' : '' }}>
+                                                    {{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="mt-3 text-center">
+                                            <a href="#">Add New Category</a>
                                         </div>
-                                    </div><!-- end card-body -->
-                                </div><!-- end card -->
-
-                                <!-- image upload-->
-                                <div class="mb-5 position-relative">
-                                    <label for="thumbnail" class="form-label" style="font-size: 1rem">Thumbnail</label>
-                                    <div class="card">
-                                        <input type="file" name="thumbnail" id="thumbnail"
-                                            value="{{ $course->thumbnail }}">
+                                        <div class="mt-2">
+                                            @error('category_id')
+                                                <p class="text-denger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
                                     </div>
-                                </div>
 
-                                <!-- Visibility -->
-                                <div
-                                    class="col-md-3
+                                    <!-- image upload-->
+                                    <div class="mb-5 position-relative">
+                                        <label for="thumbnail" class="form-label" style="font-size: 1rem">Thumbnail</label>
+                                        <div class="card">
+                                            <input type="file" name="thumbnail" id="thumbnail"
+                                                value="{{ $course->thumbnail }}">
+                                        </div>
+                                    </div>
+
+                                    <!-- Visibility -->
+                                    <div
+                                        class="col-md-3
                                             position-relative mb-5 visibility_">
-                                    <div class="border-bottom text-center ">
-                                        <h4 class="text-black">Visibility</h4>
-                                    </div>
-                                    <!-- Custom Radio Color -->
-                                    <div class="form-check form-radio-primary py-2">
-                                        <label class="form-check-label" for="active">
-                                            <input class="form-check-input" type="radio" name="visibility" id="active"
-                                                value="active" {{ $course->visibility == 'active' ? 'checked' : '' }}>
-                                            <label for="active">Active</label>
-                                        </label>
-                                    </div>
+                                        <div class="border-bottom text-center ">
+                                            <h4 class="text-black">Visibility</h4>
+                                        </div>
+                                        <!-- Custom Radio Color -->
+                                        <div class="form-check form-radio-primary py-2">
+                                            <label class="form-check-label" for="active">
+                                                <input class="form-check-input" type="radio" name="visibility"
+                                                    id="active" value="active"
+                                                    {{ $course->visibility == 'active' ? 'checked' : '' }}>
+                                                <label for="active">Active</label>
+                                            </label>
+                                        </div>
 
-                                    <!-- Custom Radio Color -->
-                                    <div class="form-check form-radio-primary">
-                                        <label class="form-check-label" for="inactive">
-                                            <input class="form-check-input" type="radio" name="visibility" id="inactive"
-                                                value="inactive" {{ $course->visibility == 'inactive' ? 'checked' : '' }}>
-                                            <label for="inactive">Inactive</label>
-                                        </label>
-                                    </div>
-                                    <div class="mt-2">
-                                        <button class="btn btn-primary w-100" type="submit">Create</button>
-                                    </div>
+                                        <!-- Custom Radio Color -->
+                                        <div class="form-check form-radio-primary">
+                                            <label class="form-check-label" for="inactive">
+                                                <input class="form-check-input" type="radio" name="visibility"
+                                                    id="inactive" value="inactive"
+                                                    {{ $course->visibility == 'inactive' ? 'checked' : '' }}>
+                                                <label for="inactive">Inactive</label>
+                                            </label>
+                                        </div>
+                                        <div class="mt-2">
+                                            <button class="btn btn-primary w-100" type="submit">Create</button>
+                                        </div>
 
-                                    @error('visibility')
-                                        <p class="text-denger">{{ $message }}</p>
-                                    @enderror
+                                        @error('visibility')
+                                            <p class="text-denger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>

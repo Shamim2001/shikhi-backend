@@ -19,7 +19,7 @@
         <div class="container-fluid">
 
             <!-- start page title -->
-            <x-page-title page="Add new Course" text="Course"  :route="route('course.index')" index="index" />
+            <x-page-title page="Add new Course" text="Course" :route="route('course.index')" index="index" />
             <!-- end page title -->
 
             <div class="row">
@@ -43,7 +43,7 @@
                                 <!-- description -->
                                 <div class="mb-5 position-relative">
                                     <label for="description" class="form-label">Description</label>
-                                    <x-tinymce-editor name="description" ></x-tinymce-editor>
+                                    <x-tinymce-editor name="description"></x-tinymce-editor>
                                     <div class="mt-2">
                                         @error('description')
                                             <p class="text-denger">{{ $message }}</p>
@@ -53,7 +53,7 @@
                                 <!-- requirement -->
                                 <div class="mb-5 position-relative">
                                     <label for="requirements" class="form-label">Requirement</label>
-                                    <x-tinymce-editor name="requirements" ></x-tinymce-editor>
+                                    <x-tinymce-editor name="requirements"></x-tinymce-editor>
                                     <div class="mt-2">
                                         @error('requirement')
                                             <p class="text-denger">{{ $message }}</p>
@@ -63,7 +63,7 @@
                                 <!-- Audience -->
                                 <div class="mb-5 position-relative">
                                     <label for="audience" class="form-label">Audience</label>
-                                    <x-tinymce-editor name="audience" ></x-tinymce-editor>
+                                    <x-tinymce-editor name="audience"></x-tinymce-editor>
                                     <div class="mt-2">
                                         @error('audience')
                                             <p class="text-denger">{{ $message }}</p>
@@ -77,37 +77,17 @@
 
                                 <div class="card mb-5">
                                     <div class="card-header text-center">
-                                        <h4 class="card-title mb-0 text-black">Category</h4>
+                                        <h4 class="card-title mb-4 text-black">Category</h4>
+                                        <select class="w-100 p-2" name="category_id">
+                                            <option value="none">Select here</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}"
+                                                    {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                                                    {{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div><!-- end card header -->
 
-                                    <div class="card-body">
-                                        <div class="mx-n3">
-                                            <div data-simplebar data-simplebar-auto-hide="false"
-                                                data-simplebar-track="secondary" style="max-height: 274px;">
-                                                <div class="list-group list-group-flush px-4">
-                                                    @foreach ($categories as $category)
-                                                        <div class="form-check py-2">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                name="category_id" id="category_id"
-                                                                value="{{ $category->id }}">
-                                                            <label class="form-check-label" for="category_id">
-                                                                {{ $category->name }}
-                                                            </label>
-                                                        </div>
-                                                    @endforeach
-
-                                                    <div class="mt-3 text-center">
-                                                        <a href="#">Add New Category</a>
-                                                    </div>
-                                                    <div class="mt-2">
-                                                        @error('category_id')
-                                                            <p class="text-denger">{{ $message }}</p>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end card-body -->
                                 </div><!-- end card -->
 
                                 <!-- image upload-->
@@ -160,7 +140,6 @@
 
 @section('script')
     <script>
-
         // register the plugins with FilePond
         FilePond.registerPlugin(
             FilePondPluginImagePreview,

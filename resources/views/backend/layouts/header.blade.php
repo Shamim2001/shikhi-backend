@@ -16,13 +16,12 @@
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/dropzone/dropzone.css" type="text/css" />
     <!-- Filepond css -->
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/filepond/filepond.min.css" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('backend') }}/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('backend') }}/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
 
     <!-- Filepond css -->
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-    <link
-    href="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.css"
-    rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.css" rel="stylesheet">
 
     <!-- Add plugin styles -->
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
@@ -43,12 +42,13 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- -->
-    <x-head.tinymce-config/>
+    <x-head.tinymce-config />
     @yield('css')
 
 </head>
@@ -221,16 +221,16 @@
                             <button type="button"
                                 class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img id="header-lang-img" src="{{ asset('backend') }}/assets/images/flags/us.png" alt="Header Language"
-                                    height="20" class="rounded">
+                                <img id="header-lang-img" src="{{ asset('backend') }}/assets/images/flags/us.png"
+                                    alt="Header Language" height="20" class="rounded">
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language py-2"
                                     data-lang="en" title="English">
-                                    <img src="{{ asset('backend') }}/assets/images/flags/us.png" alt="user-image" class="me-2 rounded"
-                                        height="18">
+                                    <img src="{{ asset('backend') }}/assets/images/flags/us.png" alt="user-image"
+                                        class="me-2 rounded" height="18">
                                     <span class="align-middle">English</span>
                                 </a>
                             </div>
@@ -584,12 +584,13 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">
                                     <img class="rounded-circle header-profile-user"
-                                        src="{{ Auth::user()->thumbnail }}"
+                                        src="{{ auth()->user()->thumbnail ? asset('storage/uploads/course/' . auth()->user()->thumbnail) : asset('backend/assets/images/users/user-dummy-img.png') }}"
                                         alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->name }}</span>
                                         <span
-                                            class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{ Auth::user()->roles[0]->name }}</span>
+                                            class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->name }}</span>
+                                        <span
+                                            class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{ Auth::user()->roles->pluck('name')[0] ?? '' }}</span>
                                     </span>
                                 </span>
                             </button>
@@ -616,9 +617,13 @@
                                 <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
                                         class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Lock screen</span></a>
-                                <a class="dropdown-item" href="auth-logout-basic.html"><i
-                                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle" data-key="t-logout">Logout</span></a>
+
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item"><i
+                                            class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                            class="align-middle" data-key="t-logout">Logout</span></button>
+                                </form>
                             </div>
                         </div>
                     </div>

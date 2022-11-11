@@ -2,24 +2,14 @@
 
 @section('title', 'Edit')
 @section('css')
-    <style>
-        .visibility_ {
-            width: 100%;
-            padding: 180px;
-            padding: 1rem;
-            border-radius: 5px;
-            background-color: #fff;
-            border: 1px solid #ced4da;
-            box-shadow: 0 7px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-    </style>
+
 @endsection
 @section('content')
     <div class="page-content">
         <div class="container-fluid">
 
             <!-- start page title -->
-            <x-page-title page="Edit User" text="User"  :route="route('user.index')" index="index" />
+            <x-page-title page="Edit User" text="User" :route="route('user.index')" index="index" />
             <!-- end page title -->
 
             <div class="row">
@@ -80,18 +70,19 @@
                             </div>
                         </div>
                         <!-- image upload-->
-                        <div class=" col-md-6 position-relative mb-3">
-                            <label for="thumbnail" class="form-label">Thumbnail</label>
-                            <div class="">
+                        <div class="col-md-6 position-relative mb-3">
+                            <label for="thumbnail" class="form-label" style="font-size: 1rem">Thumbnail</label>
+                            <div class="card">
                                 <input type="file" name="thumbnail" id="thumbnail" value="{{ $user->thumbnail }}">
                             </div>
                             <div class="">
-                                @error('phone')
+                                @error('thumbnail')
                                     <p class="text-denger">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
-                        <div class="mt-2text-end">
+
+                        <div class="mt-2 text-end">
                             <button class="btn btn-primary" type="submit">Update</button>
                         </div>
                     </form>
@@ -108,13 +99,40 @@
 
 @section('script')
     <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
-            toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
-            toolbar_mode: 'floating',
-            tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name',
+        // register the plugins with FilePond
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview,
+            FilePondPluginImageResize,
+            FilePondPluginImageTransform,
+            FilePondPluginFilePoster,
+        );
+
+        const inputElement = document.querySelector('#thumbnail');
+        const pond = FilePond.create(inputElement);
+
+        FilePond.setOptions({
+            storeAsFile: true,
+            files: [{
+                // the server file reference
+                source: '{{ rand(12, 1232333) }}',
+
+                // set type to local to indicate an already uploaded file
+                options: {
+                    type: 'local',
+
+                    // optional stub file information
+                    file: {
+                        name: '{{ $user->thumbnail }}',
+                        size: {{ \File::size(public_path('storage/uploads/course/' . $user->thumbnail)) }},
+                        type: 'image/png',
+                    },
+
+                    // pass poster property
+                    metadata: {
+                        poster: '{{ getAssetUrl($user->thumbnail, 'storage/uploads/course') }}',
+                    },
+                },
+            }, ],
         });
     </script>
 @endsection

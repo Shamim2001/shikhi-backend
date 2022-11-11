@@ -1,0 +1,7 @@
+End Point for API:
+Course
+Login
+{{url}}/user
+/user/courses
+/user/reviews
+/courses/slug/enrole
