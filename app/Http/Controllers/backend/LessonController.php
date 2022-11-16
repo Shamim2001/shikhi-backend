@@ -54,7 +54,7 @@ class LessonController extends Controller {
             'course_id'  => $request->course_id,
         ] );
 
-        return redirect()->route( 'lesson.index' )->with( 'success', 'Lesson Created Succeffull' );
+        return redirect()->route( 'course.edit' )->with( 'success', 'Lesson Created Succeffull' );
     }
 
     /**

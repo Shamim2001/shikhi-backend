@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Review;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller {
@@ -23,36 +25,46 @@ class ApiController extends Controller {
         ];
     }
 
-    // Course Enroll APi
-    // public function enrollCourse() {
-    //     return [
-    //         'error'   => false,
-    //         'message' => 'login successfull',
-    //     ];
-    // }
-
+    // Enroll Course
     public function enrollCourse( $slug ) {
         $course = Course::where( 'slug', $slug )->first();
         $result = $course->student()->sync( [auth()->user()->id] );
 
-        if($result) {
+        if ( $result ) {
             if ( $result['attached'] != [] ) {
-            return [
-                'success' => true,
-                'message' => 'Successfully enrolled !',
-            ];
+                return [
+                    'success' => true,
+                    'message' => 'Successfully enrolled !',
+                ];
+            } else {
+                return [
+                    'success' => true,
+                    'message' => 'Already enrolled !',
+                ];
+            }
         } else {
             return [
-                'success' => true,
-                'message' => 'Already enrolled !',
-            ] ;
-        }
-        } else {
-            return  [
                 'success' => true,
                 'message' => 'Something went wrong !',
             ];
         }
+    }
+
+    // Users
+    public function users() {
+        return [
+            'error'   => 'false',
+            'users' => Auth::user(),
+        ];
+    }
+
+    // review
+    public function review()
+    {
+        return [
+            'error' => 'false',
+            'reviews' => Review::get(),
+        ];
     }
 
 }

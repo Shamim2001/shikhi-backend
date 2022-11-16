@@ -19,7 +19,5 @@ Route::get('review', [ApiController::class, 'review']);
 Route::middleware(['auth:api'])->group(function () {
     Route::post('enroll/{slug}', [ApiController::class, 'enrollCourse']);
     Route::get('lessons', [LessonController::class, 'lessons']);
-    Route::get('/user', function () {
-        return Auth::user();
-    });
+    Route::get('/user', [ApiController::class, 'users']);
 });

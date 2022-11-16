@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="my-3 text-end">
-                        <a href="{{ route('lesson.create') }}?course_id={{ $course->id }}" class="btn btn-primary waves-effect waves-light">Add New Solution</a>
+                        <a href="{{ route('lesson.create') }}?course_id={{ $course->id }}" class="btn btn-primary waves-effect waves-light">Add New Lesson</a>
                     </div>
                 </div>
                 <div class="col-md-12">

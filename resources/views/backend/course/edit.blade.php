@@ -76,6 +76,14 @@
                                 </div>
                             </div>
                             <div class="w-25 mt-4">
+                                <div class="col-md-3 position-relative mb-5 visibility_">
+                                        <div class="border-bottom text-center ">
+                                            <h4 class="text-black">Lesson</h4>
+                                        </div>
+                                        <div class="mt-2">
+                                            <a href="{{ route('lesson.create') }}?course_id={{ $course->id }}" class="btn btn-success w-100" type="submit">Add Lesson</a>
+                                        </div>
+                                    </div>
 
                                 <div class="card mb-5">
                                     <div class="card-header text-center">
@@ -102,8 +110,8 @@
                                     </div>
 
                                     <!-- image upload-->
-                                    <div class="mb-5 position-relative">
-                                        <label for="thumbnail" class="form-label" style="font-size: 1rem">Thumbnail</label>
+                                    <div class="mb-5 position-relative text-center">
+                                        <label for="thumbnail" class="form-label mb-1" style="font-size: 1rem;">Thumbnail</label>
                                         <div class="card">
                                             <input type="file" name="thumbnail" id="thumbnail"
                                                 value="{{ $course->thumbnail }}">
@@ -111,9 +119,7 @@
                                     </div>
 
                                     <!-- Visibility -->
-                                    <div
-                                        class="col-md-3
-                                            position-relative mb-5 visibility_">
+                                    <div class="col-md-3 position-relative mb-5 visibility_">
                                         <div class="border-bottom text-center ">
                                             <h4 class="text-black">Visibility</h4>
                                         </div>
@@ -180,7 +186,7 @@
                     // optional stub file information
                     file: {
                         name: '{{ $course->thumbnail }}',
-                        size: {{ \File::size(public_path('storage/uploads/course/' . $course->thumbnail)) }},
+                        // size: {{ \File::size(public_path('storage/uploads/course/' . $course->thumbnail)) }},
                         type: 'image/png',
                     },
 

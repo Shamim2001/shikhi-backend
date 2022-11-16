@@ -14,12 +14,12 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
-    protected $with = ['reviews', ];
+    protected $with = ['reviews', 'users'];
 
 
-    public function coursesold()
+    public function users()
     {
-        return $this->belongsToMany(Course::class, 'courses_users', 'student_id', 'course_id');
+        return $this->belongsToMany(User::class, 'courses_users', 'course_id', 'student_id');
     }
 
 
