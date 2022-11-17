@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -58,13 +59,22 @@ class ApiController extends Controller {
         ];
     }
 
-    // review
-    public function review()
-    {
+    // Lessons
+    public function lessons( $slug ) {
+        $lessons = Lesson::where( 'slug', $slug )->with('coursess')->get();
         return [
-            'error' => 'false',
-            'reviews' => Review::get(),
+            'error'  => false,
+            'lessons' => $lessons,
         ];
     }
+
+    public function review() {
+        return [
+            'error' =>false,
+            'review' => Review::with('coursereview', 'student')->get(),
+        ];
+    }
+
+
 
 }

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->float('star', 5);
             $table->mediumText('content', 255);
-            $table->foreignId('student_id');
-            $table->foreignId('course_id');
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('course_id');
             $table->timestamps();
         });
     }

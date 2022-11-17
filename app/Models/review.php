@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
-     protected $table = 'reviews';
+    protected $table = 'reviews';
     protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $with = [];
 
     // student one to many relationship
     public function student()
@@ -18,8 +19,8 @@ class Review extends Model
     }
 
     // course one to many relationship
-    public function course()
+    public function coursereview()
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(Course::class, 'course_id', 'id');
     }
 }

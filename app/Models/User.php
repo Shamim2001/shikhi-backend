@@ -14,7 +14,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
-    protected $with = ['reviews', 'users'];
+    protected $with = ['users', ];
 
 
     public function users()
@@ -23,10 +23,6 @@ class User extends Authenticatable
     }
 
 
-    public function reviews()
-    {
-        return $this->hasMany(Review::class, 'course_id', 'id');
-    }
 
     /**
      * The attributes that should be hidden for serialization.

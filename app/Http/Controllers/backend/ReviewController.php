@@ -37,7 +37,7 @@ class ReviewController extends Controller {
         $request->validate( [
             'star'      => 'required|numeric|max:5',
             'content'   => 'required',
-            'course_id' => 'required',
+            'course_id' => 'required|not_in:none',
         ] );
 
         Review::create( [

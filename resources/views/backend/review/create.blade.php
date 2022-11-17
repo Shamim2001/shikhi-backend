@@ -41,11 +41,12 @@
                                 </div>
 
                                 <!-- Courses -->
-                                <div class="col-lg-12 position-relative mb-5">
+                                <div class="col-lg-12 mb-5">
                                     <h5 class="fw-semibold ">Courses</h5>
-                                    <select class="js-example-basic-single p-3" name="state">
+                                    <select class="w-100 p-2 fs-5" name="course_id">
+                                        <option value="none" class="mt-3">Select here</option>
                                         @foreach ($courses as $course)
-                                            <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                            <option value="{{ $course->id }}" {{ request('course_id') == $course->id ? 'selected' : '' }}>{{ $course->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -78,21 +79,3 @@
     </div>
 @endsection
 
-@section('script')
-    <script>
-
-        // register the plugins with FilePond
-        FilePond.registerPlugin(
-            FilePondPluginImagePreview,
-            FilePondPluginImageResize,
-            FilePondPluginImageTransform
-        );
-
-        const inputElement = document.querySelector('#thumbnail');
-        const pond = FilePond.create(inputElement);
-
-        FilePond.setOptions({
-            storeAsFile: true
-        });
-    </script>
-@endsection

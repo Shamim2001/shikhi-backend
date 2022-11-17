@@ -37,8 +37,8 @@
                                         <a href="{{ route('review.show', $review) }}">{{ $review->star }}</a>
                                     </td>
                                     <td class="text-center" style="width: 30%">{!! $review->content !!}</td>
-                                    <td class="text-center">{{ $review->student->name }}</td>
-                                    <td class="text-center">{{ $review->course->name }}</td>
+                                    <td class="text-center">{{ optional($review->student)->name }}</td>
+                                    <td class="text-center">{{ optional($review->course)->name }}</td>
                                     <td class="text-center">
                                         <div class="hstack gap-3 fs-19 justify-content-center">
                                             <a href="{{ route('review.edit', $review) }}" class="link-primary fs-18"><i
