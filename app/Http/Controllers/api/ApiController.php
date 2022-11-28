@@ -55,7 +55,7 @@ class ApiController extends Controller {
     public function users() {
         return [
             'error'   => 'false',
-            'users' => Auth::user(),
+            'user' => Auth::user(),
         ];
     }
 

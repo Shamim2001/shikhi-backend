@@ -24,7 +24,7 @@ class AuthController extends Controller {
             /** @var User $user */
             $user = Auth()->user();
 
-            $token = $user->createToken( 'authToken' )->accessToken;
+            $token = $user->createToken( 'token' )->plainTextToken;
 
             return [
                 'error'   => false,
@@ -35,7 +35,7 @@ class AuthController extends Controller {
         } catch ( \Throwable$th ) {
             return [
                 'error'   => true,
-                'message' => 'Something wrong!',
+                'message' => $th->getMessage(),
             ];
         }
     }
